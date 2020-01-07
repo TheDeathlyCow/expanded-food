@@ -1,0 +1,6 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "better-food:block/salt_deposit"
+	}
+}

@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": [
+            { "model": "better-food:block/salt_deposit" }
+        ]
+    }
+}

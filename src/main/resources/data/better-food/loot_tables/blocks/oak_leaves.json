@@ -1,0 +1,14 @@
+{
+	"pools": [
+		{
+			"name": "pool3",
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "better-food:green_apple"
+				}
+			]
+		}
+	]
+}
