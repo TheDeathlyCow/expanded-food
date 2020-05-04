@@ -4,5 +4,7 @@
 	"block.better-food.salt_deposit": "Salt Deposit",
 	"item.better-food.salt": "Salt",
 	"itemGroup.better-food": "Better Food",
-	"item.better-food.caramel": "Caramel"
+	"item.better-food.caramel": "Caramel",
+	"item.better-food.caramel_apple": "Caramel Apple",
+	"item.minecraft.apple": "Red Apple"
 }
