@@ -1,6 +1,7 @@
 package com.github.thedeathlycow.betterfood.init;
 
 import com.github.thedeathlycow.betterfood.Main;
+import com.github.thedeathlycow.betterfood.foods.ModFoods;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Foods;
 import net.minecraft.item.Item;
@@ -16,12 +17,14 @@ public class ModItems {
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.APPLE)), "green_apple"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.PUMPKIN_PIE)), "apple_pie"),
             new BlockItem(ModBlocks.SALT_DEPOSIT, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)).setRegistryName(ModBlocks.SALT_DEPOSIT.getRegistryName()),
-            Setup.setup(new Item(new Item.Properties().group(ItemGroup.MATERIALS)), "salt")
+            Setup.setup(new Item(new Item.Properties().group(ItemGroup.MATERIALS)), "salt"),
+            Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.CARAMEL)), "caramel")
     };
 
     public static final Item GREEN_APPLE = null;
     public static final Item APPLE_PIE = null;
     public static final Item SALT = null;
+    public static final Item CARAMEL = null;
 
 
 }
