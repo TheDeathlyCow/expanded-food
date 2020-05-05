@@ -2,10 +2,7 @@ package com.github.thedeathlycow.betterfood.init;
 
 import com.github.thedeathlycow.betterfood.Main;
 import com.github.thedeathlycow.betterfood.foods.ModFoods;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Foods;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.item.*;
 import net.minecraftforge.registries.ObjectHolder;
 
 import java.util.List;
@@ -22,7 +19,8 @@ public class ModItems {
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.CARAMEL)), "caramel"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.CARAMEL_APPLE)), "caramel_apple"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.MISC)), "rice_paddy"),
-            Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.RICE)), "rice"),
+            Setup.setup(new Item(new Item.Properties().group(ItemGroup.MISC)), "rice"),
+            Setup.setup(new SoupItem(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.RICE_BOWL).maxStackSize(1)), "rice_bowl"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.SUSHI)), "salmon_sushi"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.SUSHI)), "chicken_sushi"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.PORKCHOP)), "calamari"),
@@ -46,5 +44,6 @@ public class ModItems {
     public static final Item COOKED_CALAMARI = null;
     public static final Item CALAMARI_SUSHI = null;
     public static final Item GAS_STATION_SUSHI = null;
+    public static final Item RICE_BOWL = null;
 
 }

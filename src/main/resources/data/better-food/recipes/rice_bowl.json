@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " R ",
+    "RRR",
+    " B "
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:bowl"
+    },
+    "R": {
+      "item": "better-food:rice"
+    }
+  },
+  "result": {
+    "item": "better-food:rice_bowl"
+  }
+}

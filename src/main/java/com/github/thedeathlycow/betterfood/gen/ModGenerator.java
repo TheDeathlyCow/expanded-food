@@ -2,7 +2,6 @@ package com.github.thedeathlycow.betterfood.gen;
 
 import com.github.thedeathlycow.betterfood.init.ModBlocks;
 import com.google.common.collect.Lists;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
@@ -10,7 +9,6 @@ import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placement.CountRangeConfig;
 import net.minecraft.world.gen.placement.Placement;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModGenerator {
 
