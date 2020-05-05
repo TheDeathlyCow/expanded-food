@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "better-food:calamari"
+  },
+  "result": "better-food:cooked_calamari",
+  "experience": 0.35,
+  "cookingtime": 200
+}

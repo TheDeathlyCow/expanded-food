@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "better-food:calamari"
+  },
+  "result": "better-food:cooked_calamari",
+  "experience": 0.35,
+  "cookingtime": 100
+}

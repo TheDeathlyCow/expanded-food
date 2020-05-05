@@ -10,7 +10,7 @@
       "item": "better-food:salt"
     },
     "a": {
-      "item": "better-food:green_apple"
+      "tag": "better-food:apples"
     },
     "c": {
       "item": "better-food:caramel"
