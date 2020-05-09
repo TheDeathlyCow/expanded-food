@@ -31,7 +31,7 @@ public class ModFoods {
         CARAMEL_APPLE = (new Food.Builder()).hunger(4).saturation(0.0f).setAlwaysEdible().effect(new EffectInstance(Effects.SPEED, 200, 1), 100).build();
         RICE_BOWL = (new Food.Builder()).hunger(8).saturation(0.5f).build();
         SUSHI = (new Food.Builder()).hunger(6).saturation(0.5f).build();
-        GAS_STATION_SUSHI = (new Food.Builder()).hunger(4).saturation(0.0f).effect(gasStationSushiEffects[0], 50).effect(gasStationSushiEffects[1], 50).effect(gasStationSushiEffects[2], 50).effect(gasStationSushiEffects[3], 50).build();
+        GAS_STATION_SUSHI = (new Food.Builder()).hunger(4).saturation(0.0f).effect(gasStationSushiEffects[0], 0.5f).effect(gasStationSushiEffects[1], 0.5f).effect(gasStationSushiEffects[2], 0.5f).effect(gasStationSushiEffects[3], 0.5f).build();
     }
 
 }
