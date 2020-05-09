@@ -17,13 +17,21 @@ public class ModFoods {
     public static final Food SUSHI;
     public static final Food GAS_STATION_SUSHI;
 
+    private static EffectInstance[] gasStationSushiEffects = {
+            new EffectInstance(Effects.POISON, 600, 1),
+            new EffectInstance(Effects.BLINDNESS, 300, 1),
+            new EffectInstance(Effects.NAUSEA, 300, 2),
+            new EffectInstance(Effects.HUNGER, 600, 2),
+            new EffectInstance(Effects.INSTANT_DAMAGE, 20, 3)
+    };
+
     static {
         GREEN_APPLE = (new Food.Builder()).hunger(4).saturation(0.3F).build();
         CARAMEL = (new Food.Builder()).hunger(1).saturation(0.1f).fastToEat().build();
         CARAMEL_APPLE = (new Food.Builder()).hunger(4).saturation(0.0f).setAlwaysEdible().effect(new EffectInstance(Effects.SPEED, 200, 1), 100).build();
         RICE_BOWL = (new Food.Builder()).hunger(8).saturation(0.5f).build();
         SUSHI = (new Food.Builder()).hunger(6).saturation(0.5f).build();
-        GAS_STATION_SUSHI = (new Food.Builder()).hunger(4).saturation(0.0f).effect(new EffectInstance(Effects.POISON, 600, 1), 50).build();
+        GAS_STATION_SUSHI = (new Food.Builder()).hunger(4).saturation(0.0f).effect(gasStationSushiEffects[0], 100).effect(gasStationSushiEffects[1], 199).effect(gasStationSushiEffects[2], 100).effect(gasStationSushiEffects[3], 100).build();
     }
 
 }

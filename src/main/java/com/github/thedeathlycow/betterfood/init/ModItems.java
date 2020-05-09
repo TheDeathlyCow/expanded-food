@@ -5,9 +5,6 @@ import com.github.thedeathlycow.betterfood.foods.ModFoods;
 import net.minecraft.item.*;
 import net.minecraftforge.registries.ObjectHolder;
 
-import java.util.List;
-import java.util.Set;
-
 @ObjectHolder(Main.MODID)
 public class ModItems {
 

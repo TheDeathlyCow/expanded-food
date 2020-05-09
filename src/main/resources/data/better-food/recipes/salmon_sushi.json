@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:dried_kelp"
+    },
+	{
+      "item": "better-food:rice_bowl"
+    },
+	{
+      "item": "minecraft:salmon"
+    }
+  ],
+  "result": {
+    "item": "better-food:salmon_sushi"
+  }
+}
