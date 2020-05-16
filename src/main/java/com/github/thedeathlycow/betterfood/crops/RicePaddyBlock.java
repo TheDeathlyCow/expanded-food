@@ -1,5 +1,6 @@
 package com.github.thedeathlycow.betterfood.crops;
 
+import com.github.thedeathlycow.betterfood.init.ModBlocks;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
@@ -27,6 +28,7 @@ import java.util.Random;
  */
 public class RicePaddyBlock extends FarmlandBlock {
 
+    public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE_0_7;
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
 
     public RicePaddyBlock(Block.Properties builder) {
@@ -34,20 +36,20 @@ public class RicePaddyBlock extends FarmlandBlock {
         this.setDefaultState(this.stateContainer.getBaseState().with(MOISTURE, Integer.valueOf(7)));
     }
 
+    @Override
     public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
         if (!state.isValidPosition(worldIn, pos) || !hasWater(worldIn, pos)) {
             this.turnToDirt(state, worldIn, pos);
         }
     }
 
+    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
+        return this.hasWater(worldIn, pos);
+    }
+
     private boolean hasWater(IBlockReader worldIn, BlockPos pos) {
-
         IFluidState ifluidstate = worldIn.getFluidState(pos.offset(Direction.UP));
-        if (ifluidstate.isTagged(FluidTags.WATER)) {
-            return true;
-        }
-        return false;
-
+        return ifluidstate.isTagged(FluidTags.WATER);
     }
 
     public static void turnToDirt(BlockState state, World worldIn, BlockPos pos) {

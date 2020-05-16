@@ -1,5 +1,5 @@
 {
-    "parent": "block/cross",
+    "parent": "better-food:block/template_rice_plant",
     "textures": {
         "cross": "better-food:block/rice_stage2"
     }
