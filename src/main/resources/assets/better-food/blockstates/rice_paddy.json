@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "moisture=0": { "model": "better-food:block/rice_paddy" },
+        "moisture=1": { "model": "better-food:block/rice_paddy" },
+        "moisture=2": { "model": "better-food:block/rice_paddy" },
+        "moisture=3": { "model": "better-food:block/rice_paddy" },
+        "moisture=4": { "model": "better-food:block/rice_paddy" },
+        "moisture=5": { "model": "better-food:block/rice_paddy" },
+        "moisture=6": { "model": "better-food:block/rice_paddy" },
+        "moisture=7": { "model": "better-food:block/rice_paddy_moist" }
+    }
+}
