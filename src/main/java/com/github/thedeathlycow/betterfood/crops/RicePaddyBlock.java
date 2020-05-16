@@ -23,11 +23,10 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 /**
- * A farmland-like block that requires adjacent water to stay as a farmland block.
+ * A farmland-like block that requires water above it to stay as a farmland block.
  */
 public class RicePaddyBlock extends FarmlandBlock {
 
-    public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE_0_7;
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
 
     public RicePaddyBlock(Block.Properties builder) {
@@ -36,30 +35,24 @@ public class RicePaddyBlock extends FarmlandBlock {
     }
 
     public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
-        LOGGER.debug("Rice paddy ticking.");
-        if (!state.isValidPosition(worldIn, pos)) {
-            super.turnToDirt(state, worldIn, pos);
-        } else {
-            if (!hasWater(worldIn, pos)) {
-                super.turnToDirt(state, worldIn, pos);
-            }
+        if (!state.isValidPosition(worldIn, pos) || !hasWater(worldIn, pos)) {
+            this.turnToDirt(state, worldIn, pos);
         }
     }
 
-    private boolean hasCrops(IBlockReader worldIn, BlockPos pos) {
-        BlockState state = worldIn.getBlockState(pos.up());
-        return state.getBlock() instanceof net.minecraftforge.common.IPlantable && canSustainPlant(state, worldIn, pos, Direction.UP, (net.minecraftforge.common.IPlantable)state.getBlock());
-    }
+    private boolean hasWater(IBlockReader worldIn, BlockPos pos) {
 
-    private boolean hasWater(IBlockReader p_203943_1_, BlockPos p_203943_2_) {
-        for (Direction direction : Direction.values()) {
-            IFluidState ifluidstate = p_203943_1_.getFluidState(p_203943_2_.offset(direction));
-            if (ifluidstate.isTagged(FluidTags.WATER)) {
-                return true;
-            }
+        IFluidState ifluidstate = worldIn.getFluidState(pos.offset(Direction.UP));
+        if (ifluidstate.isTagged(FluidTags.WATER)) {
+            return true;
         }
         return false;
 
     }
+
+    public static void turnToDirt(BlockState state, World worldIn, BlockPos pos) {
+        worldIn.setBlockState(pos, nudgeEntitiesWithNewState(state, Blocks.DIRT.getDefaultState(), worldIn, pos));
+    }
+
 
 }

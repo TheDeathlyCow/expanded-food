@@ -26,4 +26,5 @@ public class RiceCropBlock extends CropsBlock {
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return state.getBlock() == ModBlocks.RICE_PADDY;
     }
+
 }

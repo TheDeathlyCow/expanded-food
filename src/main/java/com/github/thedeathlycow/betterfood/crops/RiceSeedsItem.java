@@ -27,6 +27,6 @@ public class RiceSeedsItem extends BlockNamedItem {
     @OnlyIn(Dist.CLIENT)
     public void addInfomation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> toolTip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, toolTip, flagIn);
-        toolTip.add(new TranslationTextComponent("tooltip.harderfarming:growsWetFarmland"));
+        toolTip.add(new TranslationTextComponent("tooltip.better-food:growsWetFarmland"));
     }
 }
