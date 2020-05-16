@@ -15,7 +15,7 @@ import net.minecraft.world.IBlockReader;
 public class RiceCropBlock extends CropsBlock {
 
     public RiceCropBlock() {
-        super(Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(0.0f).doesNotBlockMovement().sound(SoundType.CROP));
+        super(Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(0.0f).doesNotBlockMovement().sound(SoundType.WET_GRASS));
     }
 
     protected IItemProvider getSeedsItem() {
