@@ -1,6 +1,6 @@
 {
-    "parent": "block/crop",
+    "parent": "block/cross",
     "textures": {
-        "crop": "block/rice_stage0"
+        "cross": "better-food:block/rice_stage0"
     }
 }
