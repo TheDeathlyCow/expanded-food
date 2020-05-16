@@ -1,10 +1,12 @@
 package com.github.thedeathlycow.betterfood.crops;
 
+import com.github.thedeathlycow.betterfood.init.ModBlocks;
 import com.github.thedeathlycow.betterfood.init.ModItems;
-import net.minecraft.block.CropsBlock;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.IItemProvider;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 
 /**
  * Credit to Draco18s on the forge forums for this code.
@@ -18,5 +20,10 @@ public class RiceCropBlock extends CropsBlock {
 
     protected IItemProvider getSeedsItem() {
         return ModItems.RICE;
+    }
+
+    @Override
+    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return state.getBlock() == ModBlocks.RICE_PADDY;
     }
 }
