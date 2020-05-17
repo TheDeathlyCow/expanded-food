@@ -59,24 +59,14 @@ public class RiceCropBlock extends CropsBlock implements  ILiquidContainer {
         return Fluids.WATER.getStillFluidState(false);
     }
 
-    /*public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
-        if (!state.isValidPosition(worldIn, pos)) {
-            worldIn.destroyBlock(pos, true);
-        } else {
-            BlockPos blockpos = pos.up();
-            BlockState blockstate = worldIn.getBlockState(blockpos);
-            if (blockstate.getBlock() == Blocks.WATER && state.get(AGE) < 7 && random.nextDouble() < 0.14D) {
-                worldIn.setBlockState(blockpos, state.cycle(AGE));
-            }
-
-        }
-    }*/
-
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        BlockPos blockpos = pos.down();
-        BlockState blockstate = worldIn.getBlockState(blockpos);
-        Block block = blockstate.getBlock();
-        return block == ModBlocks.RICE_PADDY || block == this;
+        BlockPos blockOnPos = pos.down();
+        BlockState blockOnState = worldIn.getBlockState(blockOnPos);
+        Block blockOn = blockOnState.getBlock();
+
+        Block blockAbove = worldIn.getBlockState(pos.up()).getBlock();
+
+        return blockOn == ModBlocks.RICE_PADDY && blockAbove == Blocks.AIR;
     }
 
     /**

@@ -38,13 +38,30 @@ public class RicePaddyBlock extends FarmlandBlock {
 
     @Override
     public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
-        if (!state.isValidPosition(worldIn, pos) || !hasWater(worldIn, pos)) {
+        if (!state.isValidPosition(worldIn, pos)) {
             this.turnToDirt(state, worldIn, pos);
+        }else if (hasWater(worldIn, pos)) {
+            int i = state.get(MOISTURE);
+            if (!hasWater(worldIn, pos)) {
+                if (i > 0) {
+                    worldIn.setBlockState(pos, state.with(MOISTURE, Integer.valueOf(i - 1)), 2);
+                } else {
+                    this.turnToDirt(state, worldIn, pos);
+                }
+            } else if (i < 7) {
+                worldIn.setBlockState(pos, state.with(MOISTURE, Integer.valueOf(7)), 2);
+            }
         }
     }
 
+    @Override
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        return this.hasWater(worldIn, pos);
+        return (hasWater(worldIn, pos));
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        return SHAPE;
     }
 
     private boolean hasWater(IBlockReader worldIn, BlockPos pos) {
