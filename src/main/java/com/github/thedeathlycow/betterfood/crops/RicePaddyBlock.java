@@ -40,17 +40,6 @@ public class RicePaddyBlock extends FarmlandBlock {
     public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
         if (!state.isValidPosition(worldIn, pos)) {
             this.turnToDirt(state, worldIn, pos);
-        }else if (hasWater(worldIn, pos)) {
-            int i = state.get(MOISTURE);
-            if (!hasWater(worldIn, pos)) {
-                if (i > 0) {
-                    worldIn.setBlockState(pos, state.with(MOISTURE, Integer.valueOf(i - 1)), 2);
-                } else {
-                    this.turnToDirt(state, worldIn, pos);
-                }
-            } else if (i < 7) {
-                worldIn.setBlockState(pos, state.with(MOISTURE, Integer.valueOf(7)), 2);
-            }
         }
     }
 
@@ -65,13 +54,12 @@ public class RicePaddyBlock extends FarmlandBlock {
     }
 
     private boolean hasWater(IBlockReader worldIn, BlockPos pos) {
-        IFluidState ifluidstate = worldIn.getFluidState(pos.offset(Direction.UP));
+        IFluidState ifluidstate = worldIn.getFluidState(pos.up());
         return ifluidstate.isTagged(FluidTags.WATER);
     }
 
     public static void turnToDirt(BlockState state, World worldIn, BlockPos pos) {
-        worldIn.setBlockState(pos, nudgeEntitiesWithNewState(state, Blocks.DIRT.getDefaultState(), worldIn, pos));
+        worldIn.setBlockState(pos, Blocks.DIRT.getDefaultState());
     }
-
 
 }

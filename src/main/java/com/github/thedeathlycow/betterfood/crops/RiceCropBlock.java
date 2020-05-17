@@ -39,24 +39,12 @@ public class RiceCropBlock extends CropsBlock implements  ILiquidContainer {
 
     public RiceCropBlock() {
         super(Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(0.0f).doesNotBlockMovement().sound(SoundType.WET_GRASS));
-        this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
+        //this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return SHAPE;
         //return SHAPE_BY_AGE[state.get(AGE)];
-    }
-
-    /**
-     * Gets the render layer this block will render on. SOLID for solid blocks, CUTOUT or CUTOUT_MIPPED for on-off
-     * transparency (glass, reeds), TRANSLUCENT for fully blended transparency (stained glass)
-     */
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.CUTOUT;
-    }
-
-    public IFluidState getFluidState(BlockState state) {
-        return Fluids.WATER.getStillFluidState(false);
     }
 
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
@@ -69,28 +57,6 @@ public class RiceCropBlock extends CropsBlock implements  ILiquidContainer {
         return blockOn == ModBlocks.RICE_PADDY && blockAbove == Blocks.AIR;
     }
 
-    /**
-     * Update the provided state given the provided neighbor facing and neighbor state, returning a new state.
-     * For example, fences make their connections to the passed in state if possible, and wet concrete powder immediately
-     * returns its solidified counterpart.
-     * Note that this method should ideally consider only the specific face passed in.
-     */
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
-        if (!stateIn.isValidPosition(worldIn, currentPos)) {
-            if (facing == Direction.DOWN) {
-                return Blocks.AIR.getDefaultState();
-            }
-
-            worldIn.getPendingBlockTicks().scheduleTick(currentPos, this, 1);
-        }
-
-        if (facing == Direction.UP && facingState.getBlock() == this) {
-            return Blocks.KELP_PLANT.getDefaultState();
-        } else {
-            worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
-            return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
-        }
-    }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(AGE);
@@ -109,7 +75,7 @@ public class RiceCropBlock extends CropsBlock implements  ILiquidContainer {
     }
 
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.getBlock() == ModBlocks.RICE_PADDY && state.getBlock() != Blocks.FARMLAND;
+        return state.getBlock() == ModBlocks.RICE_PADDY;
     }
 
 }
