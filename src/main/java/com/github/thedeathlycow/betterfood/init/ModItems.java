@@ -24,7 +24,7 @@ public class ModItems {
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.COOKED_PORKCHOP)), "cooked_calamari"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.SUSHI)), "calamari_sushi"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.GAS_STATION_SUSHI)), "gas_station_sushi"),
-            new BlockItem(ModBlocks.PADDY, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)).setRegistryName(ModBlocks.PADDY.getRegistryName())
+            new BlockItem(ModBlocks.PADDY, new Item.Properties().group(ItemGroup.DECORATIONS)).setRegistryName(ModBlocks.PADDY.getRegistryName())
     };
 
     public static final Item GREEN_APPLE = null;
