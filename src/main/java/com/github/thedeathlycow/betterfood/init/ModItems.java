@@ -24,7 +24,7 @@ public class ModItems {
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.COOKED_PORKCHOP)), "cooked_calamari"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.SUSHI)), "calamari_sushi"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.GAS_STATION_SUSHI)), "gas_station_sushi"),
-            new BlockItem(ModBlocks.RICE_PADDY, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)).setRegistryName(ModBlocks.RICE_PADDY.getRegistryName())
+            new BlockItem(ModBlocks.PADDY, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)).setRegistryName(ModBlocks.PADDY.getRegistryName())
     };
 
     public static final Item GREEN_APPLE = null;
@@ -34,7 +34,6 @@ public class ModItems {
     public static final Item CARAMEL_APPLE = null;
 
     // rice items
-    public static final Item RICE_PADDY = null;
     public static final Item RICE = null;
     public static final Item SALMON_SUSHI = null;
     public static final Item CHICKEN_SUSHI = null;

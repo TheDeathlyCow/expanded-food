@@ -26,12 +26,12 @@ import java.util.Random;
 /**
  * A farmland-like block that requires water above it to stay as a farmland block.
  */
-public class RicePaddyBlock extends FarmlandBlock {
+public class PaddyBlock extends FarmlandBlock {
 
     public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE_0_7;
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
 
-    public RicePaddyBlock(Block.Properties builder) {
+    public PaddyBlock(Block.Properties builder) {
         super(builder);
         this.setDefaultState(this.stateContainer.getBaseState().with(MOISTURE, Integer.valueOf(7)));
     }

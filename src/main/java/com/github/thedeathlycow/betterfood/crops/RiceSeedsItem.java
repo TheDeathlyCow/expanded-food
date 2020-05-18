@@ -17,13 +17,18 @@ import java.util.List;
 /**
  * Credit to Draco18s on the forge forums for this code.
  * Source: https://www.minecraftforge.net/forum/topic/77014-crops-114/
+ *
+ * Completely unnecessary though lol
  */
+@Deprecated
 public class RiceSeedsItem extends BlockNamedItem {
 
+    @Deprecated
     public RiceSeedsItem(Block cropBlockIn) {
         super(cropBlockIn, new Properties().group(ItemGroup.MATERIALS));
     }
 
+    @Deprecated
     @OnlyIn(Dist.CLIENT)
     public void addInfomation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> toolTip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, toolTip, flagIn);
