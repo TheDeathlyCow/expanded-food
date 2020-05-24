@@ -36,17 +36,6 @@ public class WaterCropsTopBlock extends CropsBlock {
         return blockOn == ModBlocks.RICE_PLANT;
     }
 
-    /**
-     * Called just before the block is set to air.
-     * @param worldIn The world that the block was destroyed
-     * @param pos The position of the block that was destroyed
-     * @param state The state of the block that was destroyed
-     * @param player The player who harvested the block
-     */
-    public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
-        worldIn.setBlockState(pos.down(), Blocks.AIR.getDefaultState(), 2);
-    }
-
     @Override
     public int getAge(BlockState state) {
         return state.get(this.getAgeProperty());

@@ -60,13 +60,18 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
     }
 
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
+
         BlockPos blockOnPos = pos.down();
         BlockState blockOnState = worldIn.getBlockState(blockOnPos);
         Block blockOn = blockOnState.getBlock();
 
         Block blockAbove = worldIn.getBlockState(pos.up()).getBlock();
-
-        return blockOn == ModBlocks.PADDY && (blockAbove == Blocks.AIR || blockAbove == ModBlocks.RICE_PLANT_TOP);
+        if (blockAbove == ModBlocks.RICE_PLANT_TOP) {
+            return blockOn == ModBlocks.PADDY && blockAbove == ModBlocks.RICE_PLANT_TOP;
+        }
+        else {
+            return blockOn == ModBlocks.PADDY && blockAbove == Blocks.AIR;
+        }
     }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
@@ -86,7 +91,6 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
     }
 
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        Blocks
         return state.getBlock() == ModBlocks.PADDY;
     }
 
