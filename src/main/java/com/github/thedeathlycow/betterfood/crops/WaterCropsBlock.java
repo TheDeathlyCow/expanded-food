@@ -66,12 +66,7 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
         Block blockOn = blockOnState.getBlock();
 
         Block blockAbove = worldIn.getBlockState(pos.up()).getBlock();
-        if (blockAbove == ModBlocks.RICE_PLANT_TOP) {
-            return blockOn == ModBlocks.PADDY && blockAbove == ModBlocks.RICE_PLANT_TOP;
-        }
-        else {
-            return blockOn == ModBlocks.PADDY && blockAbove == Blocks.AIR;
-        }
+        return blockOn == ModBlocks.PADDY && (blockAbove == Blocks.AIR || blockAbove == ModBlocks.RICE_PLANT_TOP);
     }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
@@ -114,7 +109,7 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
         }
     }
 
-    public void updateTopBlock(BlockState state, World worldIn, BlockPos pos) {
+    private void updateTopBlock(BlockState state, World worldIn, BlockPos pos) {
         int currAge = this.getAge(state);
 
         //WaterCropsTopBlock topBlock = ModBlocks.RICE_PLANT_TOP; // for some reason this.topBlock gives a null pointer exception, figure it out later
