@@ -1,0 +1,6 @@
+{
+    "parent": "better-food:block/template_water_plant",
+    "textures": {
+        "cross": "better-food:block/rice_base_stage6"
+    }
+}

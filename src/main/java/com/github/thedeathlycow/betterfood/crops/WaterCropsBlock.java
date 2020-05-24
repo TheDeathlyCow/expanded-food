@@ -99,13 +99,17 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
 
     public void updateTopBlock(BlockState state, World worldIn, BlockPos pos, Random random) {
         int currAge = this.getAge(state);
+
+        WaterCropsTopBlock topBlock = ModBlocks.RICE_PLANT_TOP;
+
         boolean isTopBlockPlaced = hasTopBlock(state, worldIn, pos);
         if (currAge >= 3 && !isTopBlockPlaced) {
-            worldIn.setBlockState(pos.up(), this.topBlock.getDefaultState().with(AGE, this.getAge(state)), 3);
+            worldIn.setBlockState(pos.up(), topBlock.getDefaultState(), 3); // error line
         }
         else if (currAge >= 3 && isTopBlockPlaced) {
-            if (this.topBlock.getAge(state) < this.getMaxAge()) {
-                worldIn.setBlockState(pos.up(), this.topBlock.withAge(currAge), 2);
+            if (topBlock.getAge(state) < this.getMaxAge()) {
+                //topBlock.grow(worldIn, pos, state);
+                worldIn.setBlockState(pos.up(), topBlock.withAge(currAge), 2);
             }
         }
     }

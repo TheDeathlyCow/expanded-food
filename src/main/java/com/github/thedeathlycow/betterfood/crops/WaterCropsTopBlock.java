@@ -11,6 +11,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
+import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class WaterCropsTopBlock extends CropsBlock {
 
@@ -35,12 +38,17 @@ public class WaterCropsTopBlock extends CropsBlock {
         return state.get(this.getAgeProperty());
     }
 
+    @Override
+    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+        return;
+    }
+
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return state.getBlock() == ModBlocks.PADDY;
     }
 
     protected IItemProvider getSeedsItem() {
-        return null;
+        return ModItems.RICE;
     }
 
 }
