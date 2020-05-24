@@ -23,7 +23,6 @@ public class WaterCropsTopBlock extends CropsBlock {
     //private static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 32.0D, 16.0D );
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 0.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 0.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 0.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D)};
 
-
     public WaterCropsTopBlock() {
         super(Properties.create(Material.PLANTS).hardnessAndResistance(0.0f).doesNotBlockMovement().sound(SoundType.WET_GRASS));
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(3)));
@@ -45,9 +44,7 @@ public class WaterCropsTopBlock extends CropsBlock {
      * @param player The player who harvested the block
      */
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
-        BlockState paddy_state = worldIn.getBlockState(pos.down().down());
         worldIn.setBlockState(pos.down(), Blocks.AIR.getDefaultState(), 2);
-        worldIn.setBlockState(pos.down().down(), paddy_state, 2);
     }
 
     @Override

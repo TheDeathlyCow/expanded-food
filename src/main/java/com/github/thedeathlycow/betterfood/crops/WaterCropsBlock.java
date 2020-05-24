@@ -86,6 +86,7 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
     }
 
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        Blocks
         return state.getBlock() == ModBlocks.PADDY;
     }
 
@@ -103,24 +104,20 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
                 }
                 this.updateTopBlock(state, worldIn, pos);
             }
-            if (i >= this.getMaxAge()) {
+            if (i == this.getMaxAge()) {
                 this.updateTopBlock(state, worldIn, pos);
             }
         }
-
     }
 
     public void updateTopBlock(BlockState state, World worldIn, BlockPos pos) {
         int currAge = this.getAge(state);
 
-        WaterCropsTopBlock topBlock = ModBlocks.RICE_PLANT_TOP; // for some reason this.topBlock gives a null pointer exception, figure it out later
-        LOGGER.debug("HELLO FROM UPDATETOPBLOCK");
-        boolean isTopBlockPlaced = hasTopBlock(state, worldIn, pos);
+        //WaterCropsTopBlock topBlock = ModBlocks.RICE_PLANT_TOP; // for some reason this.topBlock gives a null pointer exception, figure it out later
 
         if (currAge >= 3) {
-            worldIn.setBlockState(pos.up(), topBlock.withAge(currAge), 2);
+            worldIn.setBlockState(pos.up(), this.topBlock.withAge(currAge), 2);
         }
-
     }
 
     private boolean hasTopBlock(BlockState state, World worldIn, BlockPos pos) {
