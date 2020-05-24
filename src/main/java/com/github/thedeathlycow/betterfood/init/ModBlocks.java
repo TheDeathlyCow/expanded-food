@@ -13,9 +13,9 @@ import net.minecraftforge.registries.ObjectHolder;
 public class  ModBlocks {
     public static Block[] BLOCKS = {
             Setup.setup(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f)),"salt_deposit"),
-            Setup.setup(new WaterCropsBlock(), "rice_plant"),
             Setup.setup(new PaddyBlock(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6f, 0.6f).sound(SoundType.GROUND).tickRandomly()), "paddy"),
-            Setup.setup(new WaterCropsTopBlock(), "rice_plant_top")
+            Setup.setup(new WaterCropsTopBlock(), "rice_plant_top"),
+            Setup.setup(new WaterCropsBlock(ModBlocks.RICE_PLANT_TOP), "rice_plant")
     };
 
     public static final Block SALT_DEPOSIT = null;

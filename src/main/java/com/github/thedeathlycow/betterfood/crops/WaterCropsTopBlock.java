@@ -30,6 +30,11 @@ public class WaterCropsTopBlock extends CropsBlock {
         return blockOn == ModBlocks.RICE_PLANT;
     }
 
+    @Override
+    public int getAge(BlockState state) {
+        return state.get(this.getAgeProperty());
+    }
+
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return state.getBlock() == ModBlocks.PADDY;
     }

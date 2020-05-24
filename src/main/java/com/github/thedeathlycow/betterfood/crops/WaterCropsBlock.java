@@ -27,13 +27,15 @@ import java.util.Random;
  */
 public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
 
+    public final WaterCropsTopBlock topBlock;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
-    private static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 32.0D, 16.0D );
+    private static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D );
     //private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
 
-    public WaterCropsBlock() {
+    public WaterCropsBlock(WaterCropsTopBlock topBlock) {
         super(Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(0.0f).doesNotBlockMovement().sound(SoundType.WET_GRASS));
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
+        this.topBlock = topBlock;
     }
 
     public IFluidState getFluidState(BlockState state) {
@@ -52,7 +54,7 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
 
         Block blockAbove = worldIn.getBlockState(pos.up()).getBlock();
 
-        return blockOn == ModBlocks.PADDY && blockAbove == Blocks.AIR;
+        return blockOn == ModBlocks.PADDY && (blockAbove == Blocks.AIR || blockAbove == ModBlocks.RICE_PLANT_TOP);
     }
 
     // i have no idea what half this shit does lmao
@@ -77,7 +79,7 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
         return state.getBlock() == ModBlocks.PADDY;
     }
 
-    /*public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
         super.tick(state, worldIn, pos, random);
         if (!worldIn.isAreaLoaded(pos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
         if (worldIn.getLightSubtracted(pos, 0) >= 9) {
@@ -87,12 +89,30 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
                 if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt((int)(25.0F / f) + 1) == 0)) {
                     worldIn.setBlockState(pos, this.withAge(i + 1), 2);
                     net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
+
+                    this.updateTopBlock(state, worldIn, pos, random);
                 }
             }
         }
 
-    }*/
+    }
 
+    public void updateTopBlock(BlockState state, World worldIn, BlockPos pos, Random random) {
+        int currAge = this.getAge(state);
+        boolean isTopBlockPlaced = hasTopBlock(state, worldIn, pos);
+        if (currAge >= 3 && !isTopBlockPlaced) {
+            worldIn.setBlockState(pos.up(), this.topBlock.getDefaultState().with(AGE, this.getAge(state)), 3);
+        }
+        else if (currAge >= 3 && isTopBlockPlaced) {
+            if (this.topBlock.getAge(state) < this.getMaxAge()) {
+                worldIn.setBlockState(pos.up(), this.topBlock.withAge(currAge), 2);
+            }
+        }
+    }
+
+    private boolean hasTopBlock(BlockState state, World worldIn, BlockPos pos) {
+        return worldIn.getBlockState(pos.up()).getBlock() == this.topBlock;
+    }
 
     // possibly un-needed methods but idk maybe itll all just crash
 
