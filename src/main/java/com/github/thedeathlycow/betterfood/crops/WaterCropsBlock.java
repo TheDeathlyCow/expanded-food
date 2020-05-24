@@ -4,6 +4,7 @@ import com.github.thedeathlycow.betterfood.init.ModBlocks;
 import com.github.thedeathlycow.betterfood.init.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.fluid.IFluidState;
@@ -12,6 +13,7 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
@@ -29,8 +31,8 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
 
     public final WaterCropsTopBlock topBlock;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
-    private static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D );
-    //private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
+    //private static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D );
+    private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
 
     public WaterCropsBlock(WaterCropsTopBlock topBlock) {
         super(Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(0.0f).doesNotBlockMovement().sound(SoundType.WET_GRASS));
@@ -43,8 +45,18 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        return SHAPE;
-        //return SHAPE_BY_AGE[state.get(AGE)];
+        return SHAPE_BY_AGE[state.get(this.getAgeProperty())];
+    }
+
+    public void grow(World worldIn, BlockPos pos, BlockState state) {
+        int i = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
+        int j = this.getMaxAge();
+        if (i > j) {
+            i = j;
+        }
+
+        worldIn.setBlockState(pos, this.withAge(i), 2);
+        this.updateTopBlock(state, worldIn, pos);
     }
 
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
@@ -56,8 +68,6 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
 
         return blockOn == ModBlocks.PADDY && (blockAbove == Blocks.AIR || blockAbove == ModBlocks.RICE_PLANT_TOP);
     }
-
-    // i have no idea what half this shit does lmao
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(AGE);
@@ -79,8 +89,9 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
         return state.getBlock() == ModBlocks.PADDY;
     }
 
+    @Override
     public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
-        super.tick(state, worldIn, pos, random);
+        //super.tick(state, worldIn, pos, random);
         if (!worldIn.isAreaLoaded(pos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
         if (worldIn.getLightSubtracted(pos, 0) >= 9) {
             int i = this.getAge(state);
@@ -89,66 +100,31 @@ public class WaterCropsBlock extends CropsBlock implements  ILiquidContainer {
                 if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt((int)(25.0F / f) + 1) == 0)) {
                     worldIn.setBlockState(pos, this.withAge(i + 1), 2);
                     net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
-
-                    this.updateTopBlock(state, worldIn, pos, random);
                 }
+                this.updateTopBlock(state, worldIn, pos);
+            }
+            if (i >= this.getMaxAge()) {
+                this.updateTopBlock(state, worldIn, pos);
             }
         }
 
     }
 
-    public void updateTopBlock(BlockState state, World worldIn, BlockPos pos, Random random) {
+    public void updateTopBlock(BlockState state, World worldIn, BlockPos pos) {
         int currAge = this.getAge(state);
 
-        WaterCropsTopBlock topBlock = ModBlocks.RICE_PLANT_TOP;
-
+        WaterCropsTopBlock topBlock = ModBlocks.RICE_PLANT_TOP; // for some reason this.topBlock gives a null pointer exception, figure it out later
+        LOGGER.debug("HELLO FROM UPDATETOPBLOCK");
         boolean isTopBlockPlaced = hasTopBlock(state, worldIn, pos);
-        if (currAge >= 3 && !isTopBlockPlaced) {
-            worldIn.setBlockState(pos.up(), topBlock.getDefaultState(), 3); // error line
+
+        if (currAge >= 3) {
+            worldIn.setBlockState(pos.up(), topBlock.withAge(currAge), 2);
         }
-        else if (currAge >= 3 && isTopBlockPlaced) {
-            if (topBlock.getAge(state) < this.getMaxAge()) {
-                //topBlock.grow(worldIn, pos, state);
-                worldIn.setBlockState(pos.up(), topBlock.withAge(currAge), 2);
-            }
-        }
+
     }
 
     private boolean hasTopBlock(BlockState state, World worldIn, BlockPos pos) {
         return worldIn.getBlockState(pos.up()).getBlock() == this.topBlock;
     }
-
-    // possibly un-needed methods but idk maybe itll all just crash
-
-    /**
-     * Update the provided state given the provided neighbor facing and neighbor state, returning a new state.
-     * For example, fences make their connections to the passed in state if possible, and wet concrete powder immediately
-     * returns its solidified counterpart.
-     * Note that this method should ideally consider only the specific face passed in.
-     */
-    /*public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
-        if (!stateIn.isValidPosition(worldIn, currentPos)) {
-            if (facing == Direction.DOWN) {
-                return Blocks.AIR.getDefaultState();
-            }
-
-            worldIn.getPendingBlockTicks().scheduleTick(currentPos, this, 1);
-        }
-
-        if (facing == Direction.UP && facingState.getBlock() == this) {
-            return Blocks.KELP_PLANT.getDefaultState();
-        } else {
-            worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
-            return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
-        }
-    }*/
-
-    /**
-     * Gets the render layer this block will render on. SOLID for solid blocks, CUTOUT or CUTOUT_MIPPED for on-off
-     * transparency (glass, reeds), TRANSLUCENT for fully blended transparency (stained glass)
-     */
-    /*public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.CUTOUT;
-    }*/
 
 }
