@@ -3,20 +3,54 @@ package com.github.thedeathlycow.betterfood.gen;
 import com.github.thedeathlycow.betterfood.init.ModBlocks;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
+import net.minecraft.world.chunk.AbstractChunkProvider;
+import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.structure.Structure;
+import net.minecraft.world.gen.feature.structure.Structures;
 import net.minecraft.world.gen.placement.CountRangeConfig;
+import net.minecraft.world.gen.placement.IPlacementConfig;
+import net.minecraft.world.gen.placement.NoPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
+import net.minecraftforge.fml.common.IWorldGenerator;
+
+import java.util.Locale;
+import java.util.Random;
 
 public class ModGenerator {
 
     // Vein/Chunk Count, MinHeight, MaxHeightBase, MaxHeight
     private static final CountRangeConfig salt_cfg = new CountRangeConfig(5, 32, 0, 64);
+
+    private static final CountRangeConfig rice_cfg = new CountRangeConfig(1, 63, 0, 65);
+
+
     private static final int salt_deposit_radius = 6;
     private static final int salt_deposit_height = 2;
 
+    public static final Feature<NoFeatureConfig> RICE_PLANT = register("rice_plant", new WaterCropFeature(NoFeatureConfig::deserialize));
+
+    public static void setupRiceGen() {
+        Biomes.SWAMP.addFeature(
+                GenerationStage.Decoration.VEGETAL_DECORATION,
+                Biome.createDecoratedFeature(
+                        RICE_PLANT,
+                        new NoFeatureConfig(),
+                        Placement.NOPE,
+                        new NoPlacementConfig()
+                )
+        );
+
+    }
+
+    private static <C extends IFeatureConfig, F extends Feature<C>> F register(String key, F value) {
+        return (F)(Registry.<Feature<?>>register(Registry.FEATURE, key, value));
+    }
 
     public static void setupOreGen() {
 
@@ -49,4 +83,5 @@ public class ModGenerator {
             );
         }
     }
+
 }

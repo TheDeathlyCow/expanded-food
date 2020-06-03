@@ -1,6 +1,7 @@
 package com.github.thedeathlycow.betterfood;
 
 import com.github.thedeathlycow.betterfood.gen.ModGenerator;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -15,6 +16,7 @@ public final class Main {
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
 
+
     public Main() {
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
@@ -23,6 +25,7 @@ public final class Main {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
+        ModGenerator.setupRiceGen();
         ModGenerator.setupOreGen();
         LOGGER.info("Setup method registered.");
     }
