@@ -44,7 +44,7 @@ public class WaterCropsTopBlock extends CropsBlock {
      * @param player The player who harvested the block
      */
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
-        worldIn.setBlockState(pos.down(), Blocks.WATER.getDefaultState(), 2);
+        worldIn.setBlockState(pos, ModBlocks.EMPTY_BLOCK.getDefaultState(), 2);
     }
 
     @Override
