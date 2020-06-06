@@ -13,10 +13,7 @@ import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.Structures;
-import net.minecraft.world.gen.placement.CountRangeConfig;
-import net.minecraft.world.gen.placement.IPlacementConfig;
-import net.minecraft.world.gen.placement.NoPlacementConfig;
-import net.minecraft.world.gen.placement.Placement;
+import net.minecraft.world.gen.placement.*;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 import java.util.Locale;
@@ -32,21 +29,6 @@ public class ModGenerator {
 
     private static final int salt_deposit_radius = 6;
     private static final int salt_deposit_height = 2;
-
-    public static final Feature<NoFeatureConfig> RICE_PLANT = register("rice_plant", new WaterCropFeature(NoFeatureConfig::deserialize));
-
-    public static void setupRiceGen() {
-        Biomes.SWAMP.addFeature(
-                GenerationStage.Decoration.VEGETAL_DECORATION,
-                Biome.createDecoratedFeature(
-                        RICE_PLANT,
-                        new NoFeatureConfig(),
-                        Placement.NOPE,
-                        new NoPlacementConfig()
-                )
-        );
-
-    }
 
     private static <C extends IFeatureConfig, F extends Feature<C>> F register(String key, F value) {
         return (F)(Registry.<Feature<?>>register(Registry.FEATURE, key, value));

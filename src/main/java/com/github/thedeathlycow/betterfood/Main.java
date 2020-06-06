@@ -25,7 +25,6 @@ public final class Main {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        ModGenerator.setupRiceGen();
         ModGenerator.setupOreGen();
         LOGGER.info("Setup method registered.");
     }
