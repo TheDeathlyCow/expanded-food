@@ -1,10 +1,13 @@
 package com.github.thedeathlycow.betterfood;
 
+import com.github.thedeathlycow.betterfood.feature.RicePlantFeature;
 import com.github.thedeathlycow.betterfood.gen.ModGenerator;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,8 +17,6 @@ public final class Main {
     public static final String MODID = "better-food";
 
     public static final Logger LOGGER = LogManager.getLogger(MODID);
-
-
 
     public Main() {
 
