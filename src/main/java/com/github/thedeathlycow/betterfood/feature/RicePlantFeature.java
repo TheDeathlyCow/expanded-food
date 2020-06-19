@@ -40,11 +40,15 @@ public class RicePlantFeature extends Feature<NoFeatureConfig> {
 ////                worldIn.setBlockState(blockpos, blockstate, 2);
 //            }
 //        }
+
         for(int i = 0; i < 64; ++i) {
             BlockPos blockpos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
-            BlockState blockstate = ModBlocks.PADDY.getDefaultState();
-            if (worldIn.getBlockState(blockpos).getMaterial().isReplaceable() && worldIn.getBlockState(blockpos.up()).getBlock() == Blocks.WATER) {
+            BlockState blockstate = ModBlocks.RICE_PLANT.withAge(7);
+            if (worldIn.getBlockState(blockpos) == Blocks.AIR.getDefaultState() && worldIn.getBlockState(blockpos.down()).getBlock() == Blocks.GRASS_BLOCK) {
+                blockpos = blockpos.down();
+                worldIn.setBlockState(blockpos.down(), ModBlocks.PADDY.getDefaultState(), 2);
                 worldIn.setBlockState(blockpos, blockstate, 2);
+                worldIn.setBlockState(blockpos.up(), ModBlocks.RICE_PLANT_TOP.withAge(7), 2);
             }
         }
         return true;

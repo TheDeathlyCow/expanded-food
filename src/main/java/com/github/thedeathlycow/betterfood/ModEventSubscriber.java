@@ -47,7 +47,7 @@ public final class ModEventSubscriber {
                         ModFeatures.RICE_PLANT,
                         new NoFeatureConfig(),
                         Placement.CHANCE_RANGE,
-                        new ChanceRangeConfig(1.0f, 60, 0, 65)
+                        new ChanceRangeConfig(100.0f, 60, 0, 65)
                 )
         );
     }
