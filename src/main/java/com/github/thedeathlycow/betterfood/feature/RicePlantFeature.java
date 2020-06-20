@@ -6,7 +6,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.DeadBushBlock;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
@@ -44,8 +46,7 @@ public class RicePlantFeature extends Feature<NoFeatureConfig> {
         for(int i = 0; i < 64; ++i) {
             BlockPos blockpos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
             BlockState blockstate = ModBlocks.RICE_PLANT.withAge(7);
-            if (worldIn.getBlockState(blockpos) == Blocks.AIR.getDefaultState() && worldIn.getBlockState(blockpos.down()).getBlock() == Blocks.GRASS_BLOCK) {
-                blockpos = blockpos.down();
+            if ((worldIn.getBlockState(blockpos).getBlock() == Blocks.WATER || worldIn.getBlockState(blockpos).getBlock() == Blocks.SEAGRASS) && worldIn.getBlockState(blockpos.down()).getBlock() == Blocks.DIRT && worldIn.getBlockState(blockpos.up()).getBlock() == Blocks.AIR) {
                 worldIn.setBlockState(blockpos.down(), ModBlocks.PADDY.getDefaultState(), 2);
                 worldIn.setBlockState(blockpos, blockstate, 2);
                 worldIn.setBlockState(blockpos.up(), ModBlocks.RICE_PLANT_TOP.withAge(7), 2);
