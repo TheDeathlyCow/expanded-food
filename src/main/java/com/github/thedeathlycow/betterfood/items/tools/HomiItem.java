@@ -38,7 +38,7 @@ public class HomiItem extends TieredItem {
 
         if (context.getFace() != Direction.DOWN && world.getBlockState(blockpos.up()).getBlock() == Blocks.WATER) {
             BlockState paddyState = ModBlocks.PADDY.getDefaultState();
-            if (blockState != null) {
+            if (blockState.getBlock() == Blocks.DIRT) {
                 PlayerEntity playerentity = context.getPlayer();
                 world.playSound(playerentity, blockpos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 if (!world.isRemote) {
