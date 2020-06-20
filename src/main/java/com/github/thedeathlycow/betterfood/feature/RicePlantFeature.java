@@ -29,20 +29,7 @@ public class RicePlantFeature extends Feature<NoFeatureConfig> {
 
     @Override
     public boolean place(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, NoFeatureConfig config) {
-
-//        for(int i = 0; i < 64; ++i) {
-//            BlockPos blockpos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
-//            BlockState paddy_state = ModBlocks.PADDY.getDefaultState();
-//            Block rice_crop = ModBlocks.RICE_PLANT;
-//            if (worldIn.getBlockState(blockpos).getMaterial().isReplaceable() && worldIn.getBlockState(blockpos).getBlock() == Blocks.WATER) {
-//                if (rice_crop.isValidPosition(rice_crop.getDefaultState(), worldIn, blockpos)) {
-//                    worldIn.setBlockState(blockpos.down(), paddy_state, 2);
-//                    worldIn.setBlockState(blockpos, rice_crop.getDefaultState(), 2);
-//                }
-////                worldIn.setBlockState(blockpos, blockstate, 2);
-//            }
-//        }
-
+        // spawns rice in a melon-like pattern in shallow water
         for(int i = 0; i < 64; ++i) {
             BlockPos blockpos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
             BlockState blockstate = ModBlocks.RICE_PLANT.withAge(7);
@@ -53,6 +40,5 @@ public class RicePlantFeature extends Feature<NoFeatureConfig> {
             }
         }
         return true;
-
     }
 }

@@ -10,6 +10,8 @@ import net.minecraftforge.registries.ObjectHolder;
 @ObjectHolder(Main.MODID)
 public class ModFeatures {
 
+    // features registry
+
     public static final Feature<NoFeatureConfig> RICE_PLANT = new RicePlantFeature(NoFeatureConfig::deserialize);
 
     public static Feature<?>[] FEATURES = {

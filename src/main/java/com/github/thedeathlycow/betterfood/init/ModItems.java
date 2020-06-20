@@ -3,6 +3,7 @@ package com.github.thedeathlycow.betterfood.init;
 import com.github.thedeathlycow.betterfood.Main;
 import com.github.thedeathlycow.betterfood.crops.RiceSeedsItem;
 import com.github.thedeathlycow.betterfood.foods.ModFoods;
+import com.github.thedeathlycow.betterfood.items.tools.HomiItem;
 import net.minecraft.item.*;
 import net.minecraftforge.registries.ObjectHolder;
 
@@ -24,7 +25,12 @@ public class ModItems {
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.COOKED_PORKCHOP)), "cooked_calamari"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.SUSHI)), "calamari_sushi"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.GAS_STATION_SUSHI)), "gas_station_sushi"),
-            new BlockItem(ModBlocks.PADDY, new Item.Properties().group(ItemGroup.DECORATIONS)).setRegistryName(ModBlocks.PADDY.getRegistryName())
+            new BlockItem(ModBlocks.PADDY, new Item.Properties().group(ItemGroup.DECORATIONS)).setRegistryName(ModBlocks.PADDY.getRegistryName()),
+            Setup.setup(new HomiItem(ItemTier.WOOD, -3.0f, new Item.Properties().group(ItemGroup.TOOLS)), "wooden_homi"),
+            Setup.setup(new HomiItem(ItemTier.STONE, -2.0f, new Item.Properties().group(ItemGroup.TOOLS)), "stone_homi"),
+            Setup.setup(new HomiItem(ItemTier.IRON, -1.0f, new Item.Properties().group(ItemGroup.TOOLS)), "iron_homi"),
+            Setup.setup(new HomiItem(ItemTier.DIAMOND, 0.0f, new Item.Properties().group(ItemGroup.TOOLS)), "diamond_homi"),
+            Setup.setup(new HomiItem(ItemTier.GOLD, -3.0f, new Item.Properties().group(ItemGroup.TOOLS)), "golden_homi")
     };
 
     public static final Item GREEN_APPLE = null;
@@ -43,4 +49,10 @@ public class ModItems {
     public static final Item GAS_STATION_SUSHI = null;
     public static final Item RICE_BOWL = null;
 
+    // homi
+    public static final Item WOODEN_HOMI = null;
+    public static final Item STONE_HOMI = null;
+    public static final Item IRON_HOMI = null;
+    public static final Item DIAMOND_HOMI = null;
+    public static final Item GOLDEN_HOMI = null;
 }
