@@ -43,7 +43,7 @@ public class HomiItem extends TieredItem {
         BlockPos blockpos = context.getPos();
         int hook = net.minecraftforge.event.ForgeEventFactory.onHoeUse(context);
         if (hook != 0) return hook > 0 ? ActionResultType.SUCCESS : ActionResultType.FAIL;
-        if (context.getFace() != Direction.DOWN && world.getBlockState(blockpos.up()).getMaterial() == Material.WATER) { 
+        if (context.getFace() != Direction.DOWN && world.getBlockState(blockpos.up()).getMaterial() == Material.WATER) {
             BlockState blockstate = HOMI_LOOKUP.get(world.getBlockState(blockpos).getBlock());
             if (blockstate != null) {
                 PlayerEntity playerentity = context.getPlayer();
