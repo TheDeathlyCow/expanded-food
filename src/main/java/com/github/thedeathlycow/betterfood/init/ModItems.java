@@ -1,7 +1,6 @@
 package com.github.thedeathlycow.betterfood.init;
 
 import com.github.thedeathlycow.betterfood.Main;
-import com.github.thedeathlycow.betterfood.crops.RiceSeedsItem;
 import com.github.thedeathlycow.betterfood.foods.ModFoods;
 import com.github.thedeathlycow.betterfood.items.tools.HomiItem;
 import net.minecraft.item.*;

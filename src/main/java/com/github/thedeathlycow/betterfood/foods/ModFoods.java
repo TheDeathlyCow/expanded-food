@@ -1,8 +1,6 @@
 package com.github.thedeathlycow.betterfood.foods;
 
 import net.minecraft.item.Food;
-import net.minecraft.item.Item;
-import net.minecraft.item.SoupItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 

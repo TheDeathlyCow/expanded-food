@@ -1,25 +1,17 @@
 package com.github.thedeathlycow.betterfood.gen;
 
 import com.github.thedeathlycow.betterfood.init.ModBlocks;
-import com.github.thedeathlycow.betterfood.init.ModFeatures;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Blocks;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.chunk.AbstractChunkProvider;
-import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.feature.structure.Structure;
-import net.minecraft.world.gen.feature.structure.Structures;
-import net.minecraft.world.gen.placement.*;
-import net.minecraftforge.fml.common.IWorldGenerator;
-import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.Locale;
-import java.util.Random;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.gen.feature.SphereReplaceConfig;
+import net.minecraft.world.gen.placement.CountRangeConfig;
+import net.minecraft.world.gen.placement.Placement;
 
 public class ModGenerator {
 
@@ -56,13 +48,16 @@ public class ModGenerator {
             // add salt deposits
             biome.addFeature(
                     GenerationStage.Decoration.UNDERGROUND_ORES,
-                    Biome.createDecoratedFeature(
-                            Feature.DISK,
-                            new SphereReplaceConfig( ModBlocks.SALT_DEPOSIT.getDefaultState(), salt_deposit_radius, salt_deposit_height, Lists.newArrayList(Blocks.GRAVEL.getDefaultState(), Blocks.SAND.getDefaultState())),
-                            Placement.COUNT_RANGE,
-                            salt_cfg
-                    )
+                    Feature.DISK.withConfiguration(new SphereReplaceConfig(ModBlocks.SALT_DEPOSIT.getDefaultState(), salt_deposit_radius, salt_deposit_height, Lists.newArrayList(Blocks.GRAVEL.getDefaultState(), Blocks.SAND.getDefaultState()))).withPlacement(Placement.COUNT_RANGE.configure(salt_cfg))
             );
+//            biome.addFeature(
+//                    GenerationStage.Decoration.UNDERGROUND_ORES,
+//                    Biome.func_225566_b_(Feature.DISK,
+//                            new SphereReplaceConfig(ModBlocks.SALT_DEPOSIT.getDefaultState(), salt_deposit_radius, salt_deposit_height, Lists.newArrayList(Blocks.GRAVEL.getDefaultState(), Blocks.SAND.getDefaultState())),
+//                            Placement.COUNT_RANGE,
+//                            salt_cfg
+//                    )
+//            );
         }
     }
 

@@ -1,6 +1,5 @@
 package com.github.thedeathlycow.betterfood.blocks;
 
-import com.github.thedeathlycow.betterfood.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;

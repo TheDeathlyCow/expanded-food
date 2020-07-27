@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Credit to Draco18s on the forge forums for this code.
  * Source: https://www.minecraftforge.net/forum/topic/77014-crops-114/
- *
+ * <p>
  * Completely unnecessary though lol
  */
 @Deprecated

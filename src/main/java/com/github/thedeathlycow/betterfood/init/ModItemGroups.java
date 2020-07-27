@@ -3,7 +3,6 @@ package com.github.thedeathlycow.betterfood.init;
 import com.github.thedeathlycow.betterfood.Main;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 
 import java.util.function.Supplier;
 

@@ -1,6 +1,9 @@
 package com.github.thedeathlycow.betterfood.crops;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.FarmlandBlock;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -27,7 +30,6 @@ public class PaddyBlock extends FarmlandBlock {
         this.setDefaultState(this.stateContainer.getBaseState().with(MOISTURE, Integer.valueOf(7)));
     }
 
-    @Override
     public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
         if (!state.isValidPosition(worldIn, pos)) {
             this.turnToDirt(state, worldIn, pos);
