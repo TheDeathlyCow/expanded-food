@@ -26,4 +26,5 @@ public class  ModBlocks {
             Setup.setup(new WaterCropsBlock(ModBlocks.RICE_PLANT_TOP), "rice_plant"),
             Setup.setup(new EmptyBlock(Block.Properties.create(Material.OCEAN_PLANT)), "empty_block")
     };
+
 }
