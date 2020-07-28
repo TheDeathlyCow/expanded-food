@@ -66,4 +66,19 @@ public class WaterCropsTopBlock extends CropsBlock {
         return SHAPE_BY_AGE[state.get(this.getAgeProperty())];
     }
 
+    @Override
+    public void grow(World worldIn, BlockPos pos, BlockState state) {
+        int age = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
+        int maxAge = this.getMaxAge();
+        if (age > maxAge) {
+            age = maxAge;
+        }
+
+        worldIn.setBlockState(pos, this.withAge(age), 2);
+        this.updateBottomBlock(state, worldIn, pos, age);
+    }
+
+    private void updateBottomBlock(BlockState state, World worldIn, BlockPos pos, int currAge) {
+        worldIn.setBlockState(pos.down(), ModBlocks.RICE_PLANT.withAge(currAge), 2);
+    }
 }

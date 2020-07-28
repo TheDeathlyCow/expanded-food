@@ -18,6 +18,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
@@ -47,13 +48,13 @@ public class WaterCropsBlock extends CropsBlock implements ILiquidContainer {
     }
 
     public void grow(World worldIn, BlockPos pos, BlockState state) {
-        int i = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
-        int j = this.getMaxAge();
-        if (i > j) {
-            i = j;
+        int age = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
+        int maxAge = this.getMaxAge();
+        if (age > maxAge) {
+            age = maxAge;
         }
 
-        worldIn.setBlockState(pos, this.withAge(i), 2);
+        worldIn.setBlockState(pos, this.withAge(age), 2);
         this.updateTopBlock(state, worldIn, pos);
     }
 
@@ -87,7 +88,8 @@ public class WaterCropsBlock extends CropsBlock implements ILiquidContainer {
         return state.getBlock() == ModBlocks.PADDY;
     }
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         //super.tick(state, worldIn, pos, random);
         if (!worldIn.isAreaLoaded(pos, 1))
             return; // Forge: prevent loading unloaded chunks when checking neighbor's light
