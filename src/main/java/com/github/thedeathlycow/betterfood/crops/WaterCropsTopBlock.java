@@ -47,9 +47,7 @@ public abstract class WaterCropsTopBlock extends CropsBlock {
         return state.get(this.getAgeProperty());
     }
 
-    /*protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.getBlock() == ModBlocks.PADDY;
-    }*/
+    protected abstract boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos);
 
     protected IItemProvider getSeedsItem() {
         return ModItems.RICE;

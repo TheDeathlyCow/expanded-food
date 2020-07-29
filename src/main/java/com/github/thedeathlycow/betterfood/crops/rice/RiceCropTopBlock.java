@@ -30,4 +30,9 @@ public class RiceCropTopBlock extends WaterCropsTopBlock {
 
         return blockOn == ModBlocks.RICE_PLANT;
     }
+
+    @Override
+    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return state.getBlock() == ModBlocks.PADDY;
+    }
 }

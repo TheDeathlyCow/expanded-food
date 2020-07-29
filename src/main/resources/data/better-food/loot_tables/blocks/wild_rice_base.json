@@ -32,7 +32,7 @@
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "better-food:rice_plant",
+          "block": "better-food:wild_rice_base",
           "properties": {
             "age": "7"
           }
