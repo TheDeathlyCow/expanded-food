@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "age=0": { "model": "better-food:block/rice_plant/base/rice_base_stage0" },
+        "age=1": { "model": "better-food:block/rice_plant/base/rice_base_stage1" },
+        "age=2": { "model": "better-food:block/rice_plant/base/rice_base_stage2" },
+        "age=3": { "model": "better-food:block/rice_plant/base/rice_base_stage3" },
+        "age=4": { "model": "better-food:block/rice_plant/base/rice_base_stage4" },
+        "age=5": { "model": "better-food:block/rice_plant/base/rice_base_stage5" },
+        "age=6": { "model": "better-food:block/rice_plant/base/rice_base_stage6" },
+        "age=7": { "model": "better-food:block/rice_plant/base/rice_base_stage7" }
+    }
+}
