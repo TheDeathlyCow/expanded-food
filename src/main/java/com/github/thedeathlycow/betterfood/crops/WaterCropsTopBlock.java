@@ -21,7 +21,6 @@ import net.minecraft.world.World;
 public abstract class WaterCropsTopBlock extends CropsBlock {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
-    //private static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 32.0D, 16.0D );
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 0.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 0.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 0.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D)};
 
     public WaterCropsTopBlock() {
@@ -29,13 +28,7 @@ public abstract class WaterCropsTopBlock extends CropsBlock {
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(3)));
     }
 
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        BlockPos blockOnPos = pos.down();
-        BlockState blockOnState = worldIn.getBlockState(blockOnPos);
-        Block blockOn = blockOnState.getBlock();
-
-        return blockOn == ModBlocks.RICE_PLANT;
-    }
+    public abstract boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos);
 
     /**
      * Called just before the block is set to air.

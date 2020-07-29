@@ -30,8 +30,6 @@ public abstract class WaterCropsBlock extends CropsBlock implements ILiquidConta
 
     public final WaterCropsTopBlock topBlock;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
-    //private static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D );
-    //private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
 
     public WaterCropsBlock(WaterCropsTopBlock topBlock) {
         super(Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(0.0f).doesNotBlockMovement().sound(SoundType.WET_GRASS));
@@ -56,15 +54,7 @@ public abstract class WaterCropsBlock extends CropsBlock implements ILiquidConta
         this.updateTopBlock(worldIn, pos, age);
     }
 
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-
-        BlockPos blockOnPos = pos.down();
-        BlockState blockOnState = worldIn.getBlockState(blockOnPos);
-        Block blockOn = blockOnState.getBlock();
-
-        Block blockAbove = worldIn.getBlockState(pos.up()).getBlock();
-        return blockOn == ModBlocks.PADDY && (blockAbove == Blocks.AIR || blockAbove == ModBlocks.RICE_PLANT_TOP);
-    }
+    public abstract boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos);
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(AGE);
@@ -106,10 +96,6 @@ public abstract class WaterCropsBlock extends CropsBlock implements ILiquidConta
     }
 
     private void updateTopBlock( World worldIn, BlockPos pos, int currAge) {
-        //int currAge = this.getAge(state);
-
-        //WaterCropsTopBlock topBlock = ModBlocks.RICE_PLANT_TOP; // for some reason this.topBlock gives a null pointer exception, figure it out later
-
         if (currAge >= 3) {
             worldIn.setBlockState(pos.up(), this.topBlock.withAge(currAge), 2);
         }
