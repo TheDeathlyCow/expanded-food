@@ -26,12 +26,12 @@ import java.util.Random;
  * Credit to Draco18s on the forge forums for part of this code.
  * Source: https://www.minecraftforge.net/forum/topic/77014-crops-114/
  */
-public class WaterCropsBlock extends CropsBlock implements ILiquidContainer {
+public abstract class WaterCropsBlock extends CropsBlock implements ILiquidContainer {
 
     public final WaterCropsTopBlock topBlock;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
     //private static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D );
-    private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
+    //private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
 
     public WaterCropsBlock(WaterCropsTopBlock topBlock) {
         super(Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(0.0f).doesNotBlockMovement().sound(SoundType.WET_GRASS));
@@ -43,9 +43,7 @@ public class WaterCropsBlock extends CropsBlock implements ILiquidContainer {
         return Fluids.WATER.getStillFluidState(false);
     }
 
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        return SHAPE_BY_AGE[state.get(this.getAgeProperty())];
-    }
+    public abstract VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context);
 
     public void grow(World worldIn, BlockPos pos, BlockState state) {
         int age = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
@@ -55,7 +53,7 @@ public class WaterCropsBlock extends CropsBlock implements ILiquidContainer {
         }
 
         worldIn.setBlockState(pos, this.withAge(age), 2);
-        this.updateTopBlock(state, worldIn, pos);
+        this.updateTopBlock(worldIn, pos, age);
     }
 
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
@@ -80,9 +78,7 @@ public class WaterCropsBlock extends CropsBlock implements ILiquidContainer {
         return false;
     }
 
-    protected IItemProvider getSeedsItem() {
-        return ModItems.RICE;
-    }
+    protected abstract IItemProvider getSeedsItem();
 
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return state.getBlock() == ModBlocks.PADDY;
@@ -94,23 +90,23 @@ public class WaterCropsBlock extends CropsBlock implements ILiquidContainer {
         if (!worldIn.isAreaLoaded(pos, 1))
             return; // Forge: prevent loading unloaded chunks when checking neighbor's light
         if (worldIn.getLightSubtracted(pos, 0) >= 9) {
-            int i = this.getAge(state);
-            if (i < this.getMaxAge()) {
+            int age = this.getAge(state);
+            if (age < this.getMaxAge()) {
                 float f = getGrowthChance(this, worldIn, pos);
                 if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
-                    worldIn.setBlockState(pos, this.withAge(i + 1), 2);
+                    worldIn.setBlockState(pos, this.withAge(age + 1), 2);
                     net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
                 }
-                this.updateTopBlock(state, worldIn, pos);
+                this.updateTopBlock(worldIn, pos, age);
             }
-            if (i == this.getMaxAge()) {
-                this.updateTopBlock(state, worldIn, pos);
+            if (age == this.getMaxAge()) {
+                this.updateTopBlock(worldIn, pos, age);
             }
         }
     }
 
-    private void updateTopBlock(BlockState state, World worldIn, BlockPos pos) {
-        int currAge = this.getAge(state);
+    private void updateTopBlock( World worldIn, BlockPos pos, int currAge) {
+        //int currAge = this.getAge(state);
 
         //WaterCropsTopBlock topBlock = ModBlocks.RICE_PLANT_TOP; // for some reason this.topBlock gives a null pointer exception, figure it out later
 
