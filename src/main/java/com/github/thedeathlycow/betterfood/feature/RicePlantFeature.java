@@ -25,11 +25,11 @@ public class RicePlantFeature extends Feature<NoFeatureConfig> {
         // spawns rice in a melon-like pattern in shallow water
         for (int i = 0; i < 64; ++i) {
             BlockPos blockpos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
-            BlockState blockstate = ModBlocks.RICE_PLANT.withAge(7);
+            BlockState blockstate = ModBlocks.WILD_RICE_BASE.withAge(7);
             if ((worldIn.getBlockState(blockpos).getBlock() == Blocks.WATER || worldIn.getBlockState(blockpos).getBlock() == Blocks.SEAGRASS) && worldIn.getBlockState(blockpos.down()).getBlock() == Blocks.DIRT && worldIn.getBlockState(blockpos.up()).getBlock() == Blocks.AIR) {
-                worldIn.setBlockState(blockpos.down(), ModBlocks.PADDY.getDefaultState(), 2);
+                worldIn.setBlockState(blockpos.down(), Blocks.DIRT.getDefaultState(), 2);
                 worldIn.setBlockState(blockpos, blockstate, 2);
-                worldIn.setBlockState(blockpos.up(), ModBlocks.RICE_PLANT_TOP.withAge(7), 2);
+                worldIn.setBlockState(blockpos.up(), ModBlocks.WILD_RICE_TOP.withAge(7), 2);
             }
         }
         return true;
