@@ -1,5 +1,7 @@
-package com.github.thedeathlycow.betterfood.crops;
+package com.github.thedeathlycow.betterfood.crops.rice;
 
+import com.github.thedeathlycow.betterfood.crops.WaterCropsBlock;
+import com.github.thedeathlycow.betterfood.crops.WaterCropsTopBlock;
 import com.github.thedeathlycow.betterfood.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

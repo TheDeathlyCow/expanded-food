@@ -1,6 +1,5 @@
 package com.github.thedeathlycow.betterfood.crops.rice;
 
-import com.github.thedeathlycow.betterfood.crops.RiceCropBlock;
 import com.github.thedeathlycow.betterfood.crops.WaterCropsTopBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
