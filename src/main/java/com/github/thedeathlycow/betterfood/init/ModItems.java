@@ -17,7 +17,7 @@ public class ModItems {
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.CARAMEL)), "caramel"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.CARAMEL_APPLE)), "caramel_apple"),
             Setup.setup(new BlockNamedItem(ModBlocks.RICE_PLANT, new Item.Properties().group(ItemGroup.MATERIALS)), "rice"),
-            Setup.setup(new SoupItem(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.RICE_BOWL).maxStackSize(1)), "rice_bowl"),
+            Setup.setup(new SoupItem(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.RICE_BOWL).maxStackSize(64)), "rice_bowl"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.SUSHI)), "salmon_sushi"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.SUSHI)), "chicken_sushi"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.PORKCHOP)), "calamari"),
