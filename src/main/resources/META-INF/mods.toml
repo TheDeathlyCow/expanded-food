@@ -24,7 +24,7 @@ displayURL="https://github.com/thedeathlycow/better-food" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="examplemod.png" #optional
 # A text field displayed in the mod UI
-credits="Thanks to Draco18s, A-Star, and others on the Forge forums for tidbits about how to do things." #optional
+credits="Thanks to Draco18s, A-Star, and others on the Forge forums for tidbits about how to do things. Extra special thanks to cadiboo on github for his amazing forge tutorial." #optional
 # A text field displayed in the mod UI
 authors="TheDeathlyCow" #optional
 # The description text for the mod (multi line!) (#mandatory)
