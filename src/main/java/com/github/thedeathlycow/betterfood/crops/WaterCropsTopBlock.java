@@ -17,6 +17,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public abstract class WaterCropsTopBlock extends CropsBlock {
 
@@ -38,9 +39,9 @@ public abstract class WaterCropsTopBlock extends CropsBlock {
      * @param state   The state of the block that was destroyed
      * @param player  The player who harvested the block
      */
-    public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
-        worldIn.setBlockState(pos, ModBlocks.EMPTY_BLOCK.getDefaultState(), 2);
-    }
+//    public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
+//        worldIn.setBlockState(pos, ModBlocks.EMPTY_BLOCK.getDefaultState(), 2);
+//    }
 
     @Override
     public int getAge(BlockState state) {

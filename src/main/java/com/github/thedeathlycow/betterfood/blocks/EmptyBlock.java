@@ -5,6 +5,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
 
+@Deprecated
 public class EmptyBlock extends Block {
 
 

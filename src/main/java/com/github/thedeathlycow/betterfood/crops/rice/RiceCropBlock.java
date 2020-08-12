@@ -38,6 +38,10 @@ public class RiceCropBlock extends WaterCropsBlock {
         Block blockOn = blockOnState.getBlock();
 
         Block blockAbove = worldIn.getBlockState(pos.up()).getBlock();
-        return blockOn == ModBlocks.PADDY && (blockAbove == Blocks.AIR || blockAbove == ModBlocks.RICE_PLANT_TOP);
+
+        if (this.getAge(state) >= 3) {
+            return blockOn == ModBlocks.PADDY && blockAbove == ModBlocks.RICE_PLANT_TOP;
+        }
+        return blockOn == ModBlocks.PADDY && blockAbove == Blocks.AIR;
     }
 }
