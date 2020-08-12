@@ -2,7 +2,8 @@ package com.github.thedeathlycow.betterfood.init;
 
 import com.github.thedeathlycow.betterfood.Main;
 import com.github.thedeathlycow.betterfood.blocks.EmptyBlock;
-import com.github.thedeathlycow.betterfood.crops.PaddyBlock;
+import com.github.thedeathlycow.betterfood.blocks.NetherrackFarmlandBlock;
+import com.github.thedeathlycow.betterfood.blocks.PaddyBlock;
 import com.github.thedeathlycow.betterfood.crops.WaterCropsBlock;
 import com.github.thedeathlycow.betterfood.crops.WaterCropsTopBlock;
 import com.github.thedeathlycow.betterfood.crops.rice.RiceCropBlock;
@@ -12,6 +13,7 @@ import com.github.thedeathlycow.betterfood.crops.rice.WildRiceTop;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.registries.ObjectHolder;
 
 @ObjectHolder(Main.MODID)
@@ -24,6 +26,7 @@ public class  ModBlocks {
     public static final EmptyBlock EMPTY_BLOCK = null;
     public static final WaterCropsTopBlock WILD_RICE_TOP = new WildRiceTop();
     public static final WaterCropsBlock WILD_RICE_BASE = new WildRiceBase(WILD_RICE_TOP);
+    public static final Block NETHERRACK_FARMLAND = null;
 
     public static Block[] BLOCKS = {
             Setup.setup(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f)),"salt_deposit"),
@@ -32,7 +35,8 @@ public class  ModBlocks {
             Setup.setup(RICE_PLANT, "rice_plant"),
             Setup.setup(new EmptyBlock(Block.Properties.create(Material.OCEAN_PLANT)), "empty_block"),
             Setup.setup(WILD_RICE_TOP, "wild_rice_top"),
-            Setup.setup(WILD_RICE_BASE, "wild_rice_base")
+            Setup.setup(WILD_RICE_BASE, "wild_rice_base"),
+            Setup.setup(new NetherrackFarmlandBlock(Block.Properties.create(Material.ROCK, MaterialColor.NETHERRACK).func_235861_h_().hardnessAndResistance(0.4F).sound(SoundType.field_235589_K_)), "netherrack_farmland")
     };
 
 }
