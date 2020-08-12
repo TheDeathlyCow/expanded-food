@@ -55,7 +55,7 @@ public abstract class WaterCropsBlock extends CropsBlock implements ILiquidConta
         }
 
         worldIn.setBlockState(pos, this.withAge(age), 2);
-        this.updateTopBlock((ServerWorld)worldIn, pos, age);
+        this.updateTopBlock(worldIn, pos, age);
     }
 
     public abstract boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos);
@@ -96,7 +96,7 @@ public abstract class WaterCropsBlock extends CropsBlock implements ILiquidConta
         }
     }
 
-    private void updateTopBlock(ServerWorld worldIn, BlockPos pos, int currAge) {
+    private void updateTopBlock(World worldIn, BlockPos pos, int currAge) {
         if (currAge >= 3) {
             worldIn.setBlockState(pos.up(), this.topBlock.withAge(currAge));
         }
