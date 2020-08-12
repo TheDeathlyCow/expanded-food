@@ -14,6 +14,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
@@ -30,7 +31,8 @@ public class PaddyBlock extends FarmlandBlock {
         this.setDefaultState(this.stateContainer.getBaseState().with(MOISTURE, Integer.valueOf(7)));
     }
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if (!state.isValidPosition(worldIn, pos)) {
             this.turnToDirt(state, worldIn, pos);
         }
