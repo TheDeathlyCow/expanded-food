@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FarmlandBlock;
-import net.minecraft.fluid.IFluidState;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.FluidTags;
@@ -47,7 +47,7 @@ public class PaddyBlock extends FarmlandBlock {
     }
 
     private boolean hasWater(IBlockReader worldIn, BlockPos pos) {
-        IFluidState ifluidstate = worldIn.getFluidState(pos.up());
+        FluidState ifluidstate = worldIn.getFluidState(pos.up());
         return ifluidstate.isTagged(FluidTags.WATER);
     }
 

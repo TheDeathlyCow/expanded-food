@@ -11,7 +11,7 @@ public class ModFeatures {
 
     // features registry
 
-    public static final Feature<NoFeatureConfig> RICE_PLANT = new RicePlantFeature(NoFeatureConfig::deserialize);
+    public static final Feature<NoFeatureConfig> RICE_PLANT = new RicePlantFeature(NoFeatureConfig.field_236558_a_);
 
     public static Feature<?>[] FEATURES = {
             Setup.setup(RICE_PLANT, "rice_plant")

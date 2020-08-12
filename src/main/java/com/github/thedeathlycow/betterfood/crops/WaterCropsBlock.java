@@ -1,12 +1,12 @@
 package com.github.thedeathlycow.betterfood.crops;
 
 import com.github.thedeathlycow.betterfood.init.ModBlocks;
-import com.github.thedeathlycow.betterfood.init.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -37,7 +37,7 @@ public abstract class WaterCropsBlock extends CropsBlock implements ILiquidConta
         this.topBlock = topBlock;
     }
 
-    public IFluidState getFluidState(BlockState state) {
+    public FluidState getFluidState(BlockState state) {
         return Fluids.WATER.getStillFluidState(false);
     }
 
@@ -64,7 +64,7 @@ public abstract class WaterCropsBlock extends CropsBlock implements ILiquidConta
         return false;
     }
 
-    public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, IFluidState fluidStateIn) {
+    public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
         return false;
     }
 
