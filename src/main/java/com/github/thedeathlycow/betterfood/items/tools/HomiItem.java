@@ -58,7 +58,7 @@ public class HomiItem extends TieredItem {
         return ActionResultType.PASS;
     }
 
-    private  ActionResultType tillNetherrack(World world, ItemUseContext context, BlockPos blockPos) {
+    private ActionResultType tillNetherrack(World world, ItemUseContext context, BlockPos blockPos) {
         BlockState blockstate = HOMI_LOOKUP.get(world.getBlockState(blockPos).getBlock());
         if (blockstate != null) {
             PlayerEntity playerentity = context.getPlayer();
