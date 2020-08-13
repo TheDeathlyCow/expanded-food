@@ -11,9 +11,7 @@ import com.github.thedeathlycow.betterfood.crops.rice.RiceCropBlock;
 import com.github.thedeathlycow.betterfood.crops.rice.RiceCropTopBlock;
 import com.github.thedeathlycow.betterfood.crops.rice.WildRiceBase;
 import com.github.thedeathlycow.betterfood.crops.rice.WildRiceTop;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.registries.ObjectHolder;
@@ -39,8 +37,8 @@ public class  ModBlocks {
             Setup.setup(new EmptyBlock(Block.Properties.create(Material.OCEAN_PLANT)), "empty_block"),
             Setup.setup(WILD_RICE_TOP, "wild_rice_top"),
             Setup.setup(WILD_RICE_BASE, "wild_rice_base"),
-            Setup.setup(new NetherrackFarmlandBlock(Block.Properties.create(Material.ROCK, MaterialColor.NETHERRACK).func_235861_h_().hardnessAndResistance(0.4F).sound(SoundType.field_235589_K_)), "netherrack_farmland"),
+            Setup.setup(new NetherrackFarmlandBlock(Block.Properties.create(Material.ROCK, MaterialColor.NETHERRACK).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.field_235589_K_)), "netherrack_farmland"),
             Setup.setup(ASH_YAM, "ash_yam")
-    };
+};
 
 }

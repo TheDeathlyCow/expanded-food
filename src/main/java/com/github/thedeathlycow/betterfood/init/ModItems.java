@@ -58,7 +58,7 @@ public class ModItems {
             Setup.setup(new HomiItem(ItemTier.IRON, -1.0f, new Item.Properties().group(ItemGroup.TOOLS)), "iron_homi"),
             Setup.setup(new HomiItem(ItemTier.DIAMOND, 0.0f, new Item.Properties().group(ItemGroup.TOOLS)), "diamond_homi"),
             Setup.setup(new HomiItem(ItemTier.GOLD, -3.0f, new Item.Properties().group(ItemGroup.TOOLS)), "golden_homi"),
-            Setup.setup(new Item(new Item.Properties().group(ItemGroup.MATERIALS)), "ash_yam_seeds"),
+            Setup.setup(new BlockNamedItem(ModBlocks.ASH_YAM, new Item.Properties().group(ItemGroup.MATERIALS)), "ash_yam_seeds"),
             Setup.setup(ASH_YAM, "ash_yam"),
             new BlockItem(ModBlocks.NETHERRACK_FARMLAND, new Item.Properties().group(ItemGroup.DECORATIONS)).setRegistryName(ModBlocks.NETHERRACK_FARMLAND.getRegistryName())
     };

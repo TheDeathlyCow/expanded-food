@@ -20,16 +20,40 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
-public class NetherrackFarmlandBlock extends FarmlandBlock {
+public class NetherrackFarmlandBlock extends Block {
 
-    public NetherrackFarmlandBlock(Properties properties) {
-        super(properties);
+    public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE_0_7;
+    protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
+
+    public NetherrackFarmlandBlock(AbstractBlock.Properties builder) {
+        super(builder);
+        this.setDefaultState(this.stateContainer.getBaseState().with(MOISTURE, Integer.valueOf(0)));
+    }
+
+    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+        if (facing == Direction.UP && !stateIn.isValidPosition(worldIn, currentPos)) {
+            worldIn.getPendingBlockTicks().scheduleTick(currentPos, this, 1);
+        }
+
+        return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+    }
+
+    public BlockState getStateForPlacement(BlockItemUseContext context) {
+        return !this.getDefaultState().isValidPosition(context.getWorld(), context.getPos()) ? Blocks.NETHERRACK.getDefaultState() : super.getStateForPlacement(context);
+    }
+
+    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
+        BlockState blockstate = worldIn.getBlockState(pos.up());
+        return !blockstate.getMaterial().isSolid() || blockstate.getBlock() instanceof FenceGateBlock || blockstate.getBlock() instanceof MovingPistonBlock;
     }
 
     public boolean isTransparent(BlockState state) {
         return true;
     }
 
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        return SHAPE;
+    }
 
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
         if (!state.isValidPosition(worldIn, pos)) {
@@ -41,8 +65,9 @@ public class NetherrackFarmlandBlock extends FarmlandBlock {
      * Performs a random tick on a block.
      */
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+        System.out.println("NETHERRACK FARMLAND RTICK");
         int i = state.get(MOISTURE);
-        if (!hasLava(worldIn, pos) && !worldIn.isRainingAt(pos.up())) {
+        if (!hasLava(worldIn, pos)) {
             if (i > 0) {
                 worldIn.setBlockState(pos, state.with(MOISTURE, Integer.valueOf(i - 1)), 2);
             } else if (!hasCrops(worldIn, pos)) {
@@ -85,7 +110,12 @@ public class NetherrackFarmlandBlock extends FarmlandBlock {
         return net.minecraftforge.common.FarmlandWaterManager.hasBlockWaterTicket(worldIn, pos);
     }
 
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return !this.getDefaultState().isValidPosition(context.getWorld(), context.getPos()) ? Blocks.NETHERRACK.getDefaultState() : super.getStateForPlacement(context);
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+        builder.add(MOISTURE);
     }
+
+    public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
+        return false;
+    }
+
 }

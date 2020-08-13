@@ -1,5 +1,6 @@
 package com.github.thedeathlycow.betterfood.crops;
 
+import com.github.thedeathlycow.betterfood.init.ModBlocks;
 import com.github.thedeathlycow.betterfood.init.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.item.Items;
@@ -11,6 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
@@ -26,6 +28,7 @@ public class AshYamBlock extends CropsBlock {
         super(builder);
     }
 
+    @Override
     protected IItemProvider getSeedsItem() {
         return ModItems.ASH_YAM_SEEDS;
     }
@@ -47,6 +50,10 @@ public class AshYamBlock extends CropsBlock {
         worldIn.setBlockState(pos, this.withAge(age), 2);
     }
 
+    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        return state.isIn(ModBlocks.NETHERRACK_FARMLAND);
+    }
+
     public int getMaxAge() {
         return 3;
     }
@@ -65,5 +72,14 @@ public class AshYamBlock extends CropsBlock {
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return SHAPE[state.get(this.getAgeProperty())];
+    }
+
+    @Override
+    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
+
+        BlockPos blockOnPos = pos.down();
+        BlockState blockOnState = worldIn.getBlockState(blockOnPos);
+        Block blockOn = blockOnState.getBlock();
+        return blockOn == ModBlocks.NETHERRACK_FARMLAND;
     }
 }
