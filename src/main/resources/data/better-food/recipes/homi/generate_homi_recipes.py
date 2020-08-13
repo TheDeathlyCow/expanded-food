@@ -55,7 +55,7 @@ def generate_recipe(type_name):
         material_name = 'iron_ingot'
     elif type_name == 'wooden':
         material_line = '"item": "minecraft:[MATERIAL]"'
-        material_name = '"tag": "minecraft:planks'
+        material_name = '"tag": "minecraft:planks"'
     elif type_name == 'stone':
         material_line = '"item": "minecraft:[MATERIAL]"'
         material_name = '"tag": "minecraft:stone_tool_materials"'
