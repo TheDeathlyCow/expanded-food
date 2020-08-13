@@ -1,0 +1,20 @@
+
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "M ",
+        "sM",
+        "s "
+    ],
+    "key": {
+        "s": {
+            "item": "minecraft:stick"
+        },
+        "M": {
+            "item": "minecraft:iron_ingot"
+        }
+    },
+    "result": {
+        "item": "better-food:iron_homi"
+    }
+}

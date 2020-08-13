@@ -65,7 +65,6 @@ public class NetherrackFarmlandBlock extends Block {
      * Performs a random tick on a block.
      */
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-        System.out.println("NETHERRACK FARMLAND RTICK");
         int i = state.get(MOISTURE);
         if (!hasLava(worldIn, pos)) {
             if (i > 0) {

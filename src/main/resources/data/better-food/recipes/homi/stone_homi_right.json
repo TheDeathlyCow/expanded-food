@@ -1,0 +1,20 @@
+
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "M ",
+        "sM",
+        "s "
+    ],
+    "key": {
+        "s": {
+            "item": "minecraft:stick"
+        },
+        "M": {
+            "tag": "minecraft:stone_tool_materials"
+        }
+    },
+    "result": {
+        "item": "better-food:stone_homi"
+    }
+}
