@@ -9,6 +9,34 @@ import net.minecraftforge.registries.ObjectHolder;
 @ObjectHolder(Main.MODID)
 public class ModItems {
 
+    public static final Item GREEN_APPLE = null;
+    public static final Item APPLE_PIE = null;
+    public static final Item SALT = null;
+    public static final Item CARAMEL = null;
+    public static final Item CARAMEL_APPLE = null;
+
+    // rice items
+    public static final Item RICE = null;
+    public static final Item SALMON_SUSHI = null;
+    public static final Item CHICKEN_SUSHI = null;
+    public static final Item CALAMARI = null;
+    public static final Item COOKED_CALAMARI = null;
+    public static final Item CALAMARI_SUSHI = null;
+    public static final Item GAS_STATION_SUSHI = null;
+    public static final Item RICE_BOWL = null;
+
+
+    // homi
+    public static final Item WOODEN_HOMI = null;
+    public static final Item STONE_HOMI = null;
+    public static final Item IRON_HOMI = null;
+    public static final Item DIAMOND_HOMI = null;
+    public static final Item GOLDEN_HOMI = null;
+
+    // nether crops
+    public static final Item ASH_YAM_SEEDS = null;
+    public static final Item ASH_YAM = new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.BEETROOT));
+
     public static Item[] ITEMS = {
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.APPLE)), "green_apple"),
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.PUMPKIN_PIE)), "apple_pie"),
@@ -29,29 +57,9 @@ public class ModItems {
             Setup.setup(new HomiItem(ItemTier.STONE, -2.0f, new Item.Properties().group(ItemGroup.TOOLS)), "stone_homi"),
             Setup.setup(new HomiItem(ItemTier.IRON, -1.0f, new Item.Properties().group(ItemGroup.TOOLS)), "iron_homi"),
             Setup.setup(new HomiItem(ItemTier.DIAMOND, 0.0f, new Item.Properties().group(ItemGroup.TOOLS)), "diamond_homi"),
-            Setup.setup(new HomiItem(ItemTier.GOLD, -3.0f, new Item.Properties().group(ItemGroup.TOOLS)), "golden_homi")
+            Setup.setup(new HomiItem(ItemTier.GOLD, -3.0f, new Item.Properties().group(ItemGroup.TOOLS)), "golden_homi"),
+            Setup.setup(new Item(new Item.Properties().group(ItemGroup.MATERIALS)), "ash_yam_seeds"),
+            Setup.setup(ASH_YAM, "ash_yam"),
+            new BlockItem(ModBlocks.NETHERRACK_FARMLAND, new Item.Properties().group(ItemGroup.DECORATIONS)).setRegistryName(ModBlocks.NETHERRACK_FARMLAND.getRegistryName())
     };
-
-    public static final Item GREEN_APPLE = null;
-    public static final Item APPLE_PIE = null;
-    public static final Item SALT = null;
-    public static final Item CARAMEL = null;
-    public static final Item CARAMEL_APPLE = null;
-
-    // rice items
-    public static final Item RICE = null;
-    public static final Item SALMON_SUSHI = null;
-    public static final Item CHICKEN_SUSHI = null;
-    public static final Item CALAMARI = null;
-    public static final Item COOKED_CALAMARI = null;
-    public static final Item CALAMARI_SUSHI = null;
-    public static final Item GAS_STATION_SUSHI = null;
-    public static final Item RICE_BOWL = null;
-
-    // homi
-    public static final Item WOODEN_HOMI = null;
-    public static final Item STONE_HOMI = null;
-    public static final Item IRON_HOMI = null;
-    public static final Item DIAMOND_HOMI = null;
-    public static final Item GOLDEN_HOMI = null;
 }

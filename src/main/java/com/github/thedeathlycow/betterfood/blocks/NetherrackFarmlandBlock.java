@@ -57,7 +57,7 @@ public class NetherrackFarmlandBlock extends FarmlandBlock {
      * Block's chance to react to a living entity falling on it.
      */
     public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-        if (!worldIn.isRemote && net.minecraftforge.common.ForgeHooks.onFarmlandTrample(worldIn, pos, Blocks.DIRT.getDefaultState(), fallDistance, entityIn)) { // Forge: Move logic to Entity#canTrample
+        if (!worldIn.isRemote && net.minecraftforge.common.ForgeHooks.onFarmlandTrample(worldIn, pos, Blocks.NETHERRACK.getDefaultState(), fallDistance, entityIn)) { // Forge: Move logic to Entity#canTrample
             turnToNetherrack(worldIn.getBlockState(pos), worldIn, pos);
         }
 
@@ -83,5 +83,9 @@ public class NetherrackFarmlandBlock extends FarmlandBlock {
         }
 
         return net.minecraftforge.common.FarmlandWaterManager.hasBlockWaterTicket(worldIn, pos);
+    }
+
+    public BlockState getStateForPlacement(BlockItemUseContext context) {
+        return !this.getDefaultState().isValidPosition(context.getWorld(), context.getPos()) ? Blocks.NETHERRACK.getDefaultState() : super.getStateForPlacement(context);
     }
 }
