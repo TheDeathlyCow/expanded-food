@@ -37,7 +37,9 @@ public class  ModBlocks {
             Setup.setup(new EmptyBlock(Block.Properties.create(Material.OCEAN_PLANT)), "empty_block"),
             Setup.setup(WILD_RICE_TOP, "wild_rice_top"),
             Setup.setup(WILD_RICE_BASE, "wild_rice_base"),
-            Setup.setup(new NetherrackFarmlandBlock(Block.Properties.create(Material.ROCK, MaterialColor.NETHERRACK).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.field_235589_K_)), "netherrack_farmland"),
+            Setup.setup(new NetherrackFarmlandBlock(Block.Properties.create(Material.ROCK, MaterialColor.NETHERRACK).func_235838_a_((property) -> {
+                if (property.get(NetherrackFarmlandBlock.HEAT) == 7) return 2; else return 0;
+            }).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.field_235589_K_)), "netherrack_farmland"),
             Setup.setup(ASH_YAM, "ash_yam")
 };
 

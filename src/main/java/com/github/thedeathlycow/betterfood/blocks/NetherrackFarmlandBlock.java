@@ -6,7 +6,6 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -21,13 +20,12 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.Random;
 
 public class NetherrackFarmlandBlock extends Block {
-
-    public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE_0_7;
+    public static final IntegerProperty HEAT = IntegerProperty.create("heat", 0,7);
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
 
     public NetherrackFarmlandBlock(AbstractBlock.Properties builder) {
         super(builder);
-        this.setDefaultState(this.stateContainer.getBaseState().with(MOISTURE, Integer.valueOf(0)));
+        this.setDefaultState(this.stateContainer.getBaseState().with(HEAT, Integer.valueOf(0)));
     }
 
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
@@ -65,15 +63,15 @@ public class NetherrackFarmlandBlock extends Block {
      * Performs a random tick on a block.
      */
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-        int i = state.get(MOISTURE);
+        int i = state.get(HEAT);
         if (!hasLava(worldIn, pos)) {
             if (i > 0) {
-                worldIn.setBlockState(pos, state.with(MOISTURE, Integer.valueOf(i - 1)), 2);
+                worldIn.setBlockState(pos, state.with(HEAT, Integer.valueOf(i - 1)), 2);
             } else if (!hasCrops(worldIn, pos)) {
                 turnToNetherrack(state, worldIn, pos);
             }
         } else if (i < 7) {
-            worldIn.setBlockState(pos, state.with(MOISTURE, Integer.valueOf(7)), 2);
+            worldIn.setBlockState(pos, state.with(HEAT, Integer.valueOf(7)), 2);
         }
     }
 
@@ -109,8 +107,9 @@ public class NetherrackFarmlandBlock extends Block {
         return net.minecraftforge.common.FarmlandWaterManager.hasBlockWaterTicket(worldIn, pos);
     }
 
+    @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(MOISTURE);
+        builder.add(HEAT);
     }
 
     public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {

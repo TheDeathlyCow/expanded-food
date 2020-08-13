@@ -17,25 +17,34 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Mod;
 
-import javax.swing.*;
 import java.util.Map;
 
 public class HomiItem extends TieredItem {
 
     private final float speed;
-    protected static final Map<Block, BlockState> HOMI_LOOKUP = Maps.newHashMap(ImmutableMap.of(
-            Blocks.GRASS_BLOCK, ModBlocks.PADDY.getDefaultState(),
-            Blocks.GRASS_PATH, ModBlocks.PADDY.getDefaultState(),
-            Blocks.DIRT, ModBlocks.PADDY.getDefaultState(),
-            Blocks.COARSE_DIRT, Blocks.DIRT.getDefaultState(),
-            Blocks.NETHERRACK, ModBlocks.NETHERRACK_FARMLAND.getDefaultState()
-    ));
+//    protected static final Map<Block, BlockState> HOMI_LOOKUP = Maps.newHashMap(ImmutableMap.of(
+//            Blocks.GRASS_BLOCK, ModBlocks.PADDY.getDefaultState(),
+//            Blocks.GRASS_PATH, ModBlocks.PADDY.getDefaultState(),
+//            Blocks.DIRT, ModBlocks.PADDY.getDefaultState(),
+//            Blocks.COARSE_DIRT, Blocks.DIRT.getDefaultState(),
+//            Blocks.NETHERRACK, ModBlocks.NETHERRACK_FARMLAND.getDefaultState()
+//    ));
 
+    protected  static final Map<Block, BlockState> HOMI_LOOKUP = ImmutableMap.<Block, BlockState>builder().
+            put(Blocks.GRASS_BLOCK, ModBlocks.PADDY.getDefaultState()).
+            put(Blocks.GRASS_PATH, ModBlocks.PADDY.getDefaultState()).
+            put(Blocks.DIRT, ModBlocks.PADDY.getDefaultState()).
+            put(Blocks.COARSE_DIRT, Blocks.DIRT.getDefaultState()).
+            put(Blocks.NETHERRACK, ModBlocks.NETHERRACK_FARMLAND.getDefaultState()).
+            put(Blocks.field_235372_ml_, ModBlocks.NETHERRACK_FARMLAND.getDefaultState()). // warped nylium
+            put(Blocks.field_235381_mu_, ModBlocks.NETHERRACK_FARMLAND.getDefaultState()). // crimson nylium
+            build();
 
     public HomiItem(IItemTier itemTier, float attackSpeedIn, Item.Properties builder) {
         super(itemTier, builder);
+//        HOMI_LOOKUP.put(Blocks.field_235372_ml_, ModBlocks.NETHERRACK_FARMLAND.getDefaultState());
+//        HOMI_LOOKUP.put(Blocks.field_235381_mu_, ModBlocks.NETHERRACK_FARMLAND.getDefaultState());
         this.speed = attackSpeedIn;
     }
 
@@ -51,7 +60,7 @@ public class HomiItem extends TieredItem {
         if (context.getFace() != Direction.DOWN && world.getBlockState(blockpos.up()).getMaterial() == Material.WATER) {
             return this.tillPaddy(world, context, blockpos);
         }
-        else if (context.getFace() != Direction.DOWN && world.getBlockState(blockpos) == Blocks.NETHERRACK.getDefaultState()) {
+        else if (context.getFace() != Direction.DOWN) {
             return tillNetherrack(world, context, blockpos);
         }
 
