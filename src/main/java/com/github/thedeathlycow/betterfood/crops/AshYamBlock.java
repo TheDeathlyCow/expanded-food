@@ -46,7 +46,6 @@ public class AshYamBlock extends CropsBlock {
         if (age > maxAge) {
             age = maxAge;
         }
-
         worldIn.setBlockState(pos, this.withAge(age), 2);
     }
 

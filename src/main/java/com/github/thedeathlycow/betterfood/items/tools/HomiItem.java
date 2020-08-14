@@ -23,13 +23,6 @@ import java.util.Map;
 public class HomiItem extends TieredItem {
 
     private final float speed;
-//    protected static final Map<Block, BlockState> HOMI_LOOKUP = Maps.newHashMap(ImmutableMap.of(
-//            Blocks.GRASS_BLOCK, ModBlocks.PADDY.getDefaultState(),
-//            Blocks.GRASS_PATH, ModBlocks.PADDY.getDefaultState(),
-//            Blocks.DIRT, ModBlocks.PADDY.getDefaultState(),
-//            Blocks.COARSE_DIRT, Blocks.DIRT.getDefaultState(),
-//            Blocks.NETHERRACK, ModBlocks.NETHERRACK_FARMLAND.getDefaultState()
-//    ));
 
     protected  static final Map<Block, BlockState> HOMI_LOOKUP = ImmutableMap.<Block, BlockState>builder().
             put(Blocks.GRASS_BLOCK, ModBlocks.PADDY.getDefaultState()).
@@ -43,8 +36,6 @@ public class HomiItem extends TieredItem {
 
     public HomiItem(IItemTier itemTier, float attackSpeedIn, Item.Properties builder) {
         super(itemTier, builder);
-//        HOMI_LOOKUP.put(Blocks.field_235372_ml_, ModBlocks.NETHERRACK_FARMLAND.getDefaultState());
-//        HOMI_LOOKUP.put(Blocks.field_235381_mu_, ModBlocks.NETHERRACK_FARMLAND.getDefaultState());
         this.speed = attackSpeedIn;
     }
 
