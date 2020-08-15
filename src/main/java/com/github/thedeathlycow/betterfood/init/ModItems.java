@@ -3,11 +3,41 @@ package com.github.thedeathlycow.betterfood.init;
 import com.github.thedeathlycow.betterfood.Main;
 import com.github.thedeathlycow.betterfood.foods.ModFoods;
 import com.github.thedeathlycow.betterfood.items.tools.HomiItem;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraftforge.registries.ObjectHolder;
 
 @ObjectHolder(Main.MODID)
 public class ModItems {
+
+    public static final Item GREEN_APPLE = null;
+    public static final Item APPLE_PIE = null;
+    public static final Item SALT = null;
+    public static final Item CARAMEL = null;
+    public static final Item CARAMEL_APPLE = null;
+
+    // rice items
+    public static final Item RICE = null;
+    public static final Item SALMON_SUSHI = null;
+    public static final Item CHICKEN_SUSHI = null;
+    public static final Item CALAMARI = null;
+    public static final Item COOKED_CALAMARI = null;
+    public static final Item CALAMARI_SUSHI = null;
+    public static final Item GAS_STATION_SUSHI = null;
+    public static final Item RICE_BOWL = null;
+
+
+    // homi
+    public static final Item WOODEN_HOMI = null;
+    public static final Item STONE_HOMI = null;
+    public static final Item IRON_HOMI = null;
+    public static final Item DIAMOND_HOMI = null;
+    public static final Item GOLDEN_HOMI = null;
+
+    // nether crops
+    public static final Item WARPED_YAM_SEEDS = null;
+    public static final Item WARPED_YAM = new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.BEETROOT));
+    public static final Item LAVA_BERRIES = new BlockNamedItem(ModBlocks.LAVA_BERRY_BUSH, (new Item.Properties()).group(ItemGroup.FOOD).food(ModFoods.LAVA_BERRIES));
 
     public static Item[] ITEMS = {
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.APPLE)), "green_apple"),
@@ -29,29 +59,10 @@ public class ModItems {
             Setup.setup(new HomiItem(ItemTier.STONE, -2.0f, new Item.Properties().group(ItemGroup.TOOLS)), "stone_homi"),
             Setup.setup(new HomiItem(ItemTier.IRON, -1.0f, new Item.Properties().group(ItemGroup.TOOLS)), "iron_homi"),
             Setup.setup(new HomiItem(ItemTier.DIAMOND, 0.0f, new Item.Properties().group(ItemGroup.TOOLS)), "diamond_homi"),
-            Setup.setup(new HomiItem(ItemTier.GOLD, -3.0f, new Item.Properties().group(ItemGroup.TOOLS)), "golden_homi")
+            Setup.setup(new HomiItem(ItemTier.GOLD, -3.0f, new Item.Properties().group(ItemGroup.TOOLS)), "golden_homi"),
+            Setup.setup(new BlockNamedItem(ModBlocks.WARPED_YAM, new Item.Properties().group(ItemGroup.MATERIALS)), "warped_yam_seeds"),
+            Setup.setup(WARPED_YAM, "warped_yam"),
+            new BlockItem(ModBlocks.NETHERRACK_FARMLAND, new Item.Properties().group(ItemGroup.DECORATIONS)).setRegistryName(ModBlocks.NETHERRACK_FARMLAND.getRegistryName()),
+            Setup.setup(LAVA_BERRIES, "lava_berries")
     };
-
-    public static final Item GREEN_APPLE = null;
-    public static final Item APPLE_PIE = null;
-    public static final Item SALT = null;
-    public static final Item CARAMEL = null;
-    public static final Item CARAMEL_APPLE = null;
-
-    // rice items
-    public static final Item RICE = null;
-    public static final Item SALMON_SUSHI = null;
-    public static final Item CHICKEN_SUSHI = null;
-    public static final Item CALAMARI = null;
-    public static final Item COOKED_CALAMARI = null;
-    public static final Item CALAMARI_SUSHI = null;
-    public static final Item GAS_STATION_SUSHI = null;
-    public static final Item RICE_BOWL = null;
-
-    // homi
-    public static final Item WOODEN_HOMI = null;
-    public static final Item STONE_HOMI = null;
-    public static final Item IRON_HOMI = null;
-    public static final Item DIAMOND_HOMI = null;
-    public static final Item GOLDEN_HOMI = null;
 }

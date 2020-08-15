@@ -1,0 +1,20 @@
+
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " M",
+        "Ms",
+        " s"
+    ],
+    "key": {
+        "s": {
+            "item": "minecraft:stick"
+        },
+        "M": {
+            "item": "minecraft:netherrite"
+        }
+    },
+    "result": {
+        "item": "better-food:netherrite_homi"
+    }
+}

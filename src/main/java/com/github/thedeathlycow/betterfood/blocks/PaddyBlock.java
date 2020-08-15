@@ -1,4 +1,4 @@
-package com.github.thedeathlycow.betterfood.crops;
+package com.github.thedeathlycow.betterfood.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

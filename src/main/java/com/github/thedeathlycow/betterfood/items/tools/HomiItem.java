@@ -23,8 +23,16 @@ import java.util.Map;
 public class HomiItem extends TieredItem {
 
     private final float speed;
-    protected static final Map<Block, BlockState> HOMI_LOOKUP = Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, ModBlocks.PADDY.getDefaultState(), Blocks.GRASS_PATH, ModBlocks.PADDY.getDefaultState(), Blocks.DIRT, ModBlocks.PADDY.getDefaultState(), Blocks.COARSE_DIRT, Blocks.DIRT.getDefaultState()));
 
+    protected  static final Map<Block, BlockState> HOMI_LOOKUP = ImmutableMap.<Block, BlockState>builder().
+            put(Blocks.GRASS_BLOCK, ModBlocks.PADDY.getDefaultState()).
+            put(Blocks.GRASS_PATH, ModBlocks.PADDY.getDefaultState()).
+            put(Blocks.DIRT, ModBlocks.PADDY.getDefaultState()).
+            put(Blocks.COARSE_DIRT, Blocks.DIRT.getDefaultState()).
+            put(Blocks.NETHERRACK, ModBlocks.NETHERRACK_FARMLAND.getDefaultState()).
+            put(Blocks.field_235372_ml_, ModBlocks.NETHERRACK_FARMLAND.getDefaultState()). // warped nylium
+            put(Blocks.field_235381_mu_, ModBlocks.NETHERRACK_FARMLAND.getDefaultState()). // crimson nylium
+            build();
 
     public HomiItem(IItemTier itemTier, float attackSpeedIn, Item.Properties builder) {
         super(itemTier, builder);
@@ -41,23 +49,50 @@ public class HomiItem extends TieredItem {
         int hook = net.minecraftforge.event.ForgeEventFactory.onHoeUse(context);
         if (hook != 0) return hook > 0 ? ActionResultType.SUCCESS : ActionResultType.FAIL;
         if (context.getFace() != Direction.DOWN && world.getBlockState(blockpos.up()).getMaterial() == Material.WATER) {
-            BlockState blockstate = HOMI_LOOKUP.get(world.getBlockState(blockpos).getBlock());
-            if (blockstate != null) {
-                PlayerEntity playerentity = context.getPlayer();
-                world.playSound(playerentity, blockpos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                if (!world.isRemote) {
-                    world.setBlockState(blockpos, blockstate, 11);
-                    if (playerentity != null) {
-                        context.getItem().damageItem(1, playerentity, (p_220043_1_) -> {
-                            p_220043_1_.sendBreakAnimation(context.getHand());
-                        });
-                    }
-                }
-
-                return ActionResultType.SUCCESS;
-            }
+            return this.tillPaddy(world, context, blockpos);
+        }
+        else if (context.getFace() != Direction.DOWN) {
+            return tillNetherrack(world, context, blockpos);
         }
 
+        return ActionResultType.PASS;
+    }
+
+    private ActionResultType tillNetherrack(World world, ItemUseContext context, BlockPos blockPos) {
+        BlockState blockstate = HOMI_LOOKUP.get(world.getBlockState(blockPos).getBlock());
+        if (blockstate != null) {
+            PlayerEntity playerentity = context.getPlayer();
+            world.playSound(playerentity, blockPos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            if (!world.isRemote) {
+                world.setBlockState(blockPos, blockstate, 11);
+                if (playerentity != null) {
+                    context.getItem().damageItem(3, playerentity, (player) -> {
+                        player.sendBreakAnimation(context.getHand());
+                    });
+                }
+            }
+
+            return ActionResultType.SUCCESS;
+        }
+        return ActionResultType.PASS;
+    }
+
+    private ActionResultType tillPaddy(World world, ItemUseContext context, BlockPos blockpos) {
+        BlockState blockstate = HOMI_LOOKUP.get(world.getBlockState(blockpos).getBlock());
+        if (blockstate != null) {
+            PlayerEntity playerentity = context.getPlayer();
+            world.playSound(playerentity, blockpos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            if (!world.isRemote) {
+                world.setBlockState(blockpos, blockstate, 11);
+                if (playerentity != null) {
+                    context.getItem().damageItem(1, playerentity, (player) -> {
+                        player.sendBreakAnimation(context.getHand());
+                    });
+                }
+            }
+
+            return ActionResultType.SUCCESS;
+        }
         return ActionResultType.PASS;
     }
 

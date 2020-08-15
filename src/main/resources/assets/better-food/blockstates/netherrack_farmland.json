@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "heat=0": {
+      "model": "better-food:block/netherrack_farmland"
+    },
+    "heat=1": {
+      "model": "better-food:block/netherrack_farmland"
+    },
+    "heat=2": {
+      "model": "better-food:block/netherrack_farmland"
+    },
+    "heat=3": {
+      "model": "better-food:block/netherrack_farmland"
+    },
+    "heat=4": {
+      "model": "better-food:block/netherrack_farmland"
+    },
+    "heat=5": {
+      "model": "better-food:block/netherrack_farmland"
+    },
+    "heat=6": {
+      "model": "better-food:block/netherrack_farmland"
+    },
+    "heat=7": {
+      "model": "better-food:block/hot_netherrack_farmland"
+    }
+  }
+}
