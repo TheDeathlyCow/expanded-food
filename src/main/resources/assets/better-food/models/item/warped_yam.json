@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "better-food:item/ash_yam_seeds"
+		"layer0": "better-food:item/warped_yam"
 	}
 }

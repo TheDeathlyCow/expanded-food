@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/crop",
   "textures": {
-    "crop": "better-food:block/ash_yam_stage0"
+    "crop": "better-food:block/warped_yam_stage2"
   }
 }

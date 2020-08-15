@@ -18,19 +18,19 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
-public class AshYamBlock extends CropsBlock {
+public class WarpedYamBlock extends CropsBlock {
 
 
-    public static final IntegerProperty ASH_YAM_AGE = BlockStateProperties.AGE_0_3;
+    public static final IntegerProperty WARPED_YAM_AGE = BlockStateProperties.AGE_0_3;
     private static final VoxelShape[] SHAPE = new VoxelShape[]{Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D)};
 
-    public AshYamBlock(Properties builder) {
+    public WarpedYamBlock(Properties builder) {
         super(builder);
     }
 
     @Override
     protected IItemProvider getSeedsItem() {
-        return ModItems.ASH_YAM_SEEDS;
+        return ModItems.WARPED_YAM_SEEDS;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class AshYamBlock extends CropsBlock {
     }
 
     public IntegerProperty getAgeProperty() {
-        return ASH_YAM_AGE;
+        return WARPED_YAM_AGE;
     }
 
     protected int getBonemealAgeIncrease(World worldIn) {
@@ -66,7 +66,7 @@ public class AshYamBlock extends CropsBlock {
     }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(ASH_YAM_AGE);
+        builder.add(WARPED_YAM_AGE);
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {

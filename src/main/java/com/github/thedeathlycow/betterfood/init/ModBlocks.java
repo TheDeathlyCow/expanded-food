@@ -4,7 +4,7 @@ import com.github.thedeathlycow.betterfood.Main;
 import com.github.thedeathlycow.betterfood.blocks.EmptyBlock;
 import com.github.thedeathlycow.betterfood.blocks.NetherrackFarmlandBlock;
 import com.github.thedeathlycow.betterfood.blocks.PaddyBlock;
-import com.github.thedeathlycow.betterfood.crops.AshYamBlock;
+import com.github.thedeathlycow.betterfood.crops.WarpedYamBlock;
 import com.github.thedeathlycow.betterfood.crops.LavaBerryBlock;
 import com.github.thedeathlycow.betterfood.crops.WaterCropsBlock;
 import com.github.thedeathlycow.betterfood.crops.WaterCropsTopBlock;
@@ -28,7 +28,7 @@ public class  ModBlocks {
     public static final WaterCropsTopBlock WILD_RICE_TOP = new WildRiceTop();
     public static final WaterCropsBlock WILD_RICE_BASE = new WildRiceBase(WILD_RICE_TOP);
     public static final Block NETHERRACK_FARMLAND = null;
-    public static final Block ASH_YAM = new AshYamBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.field_235591_M_));
+    public static final Block WARPED_YAM = new WarpedYamBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.field_235591_M_));
     public static final Block LAVA_BERRIES = new LavaBerryBlock(AbstractBlock.Properties.create(Material.PLANTS).tickRandomly().zeroHardnessAndResistance().sound(SoundType.CROP));
 
     public static Block[] BLOCKS = {
@@ -42,7 +42,7 @@ public class  ModBlocks {
             Setup.setup(new NetherrackFarmlandBlock(Block.Properties.create(Material.ROCK, MaterialColor.NETHERRACK).func_235838_a_((property) -> {
                 if (property.get(NetherrackFarmlandBlock.HEAT) == 7) return 2; else return 0;
             }).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.field_235589_K_)), "netherrack_farmland"),
-            Setup.setup(ASH_YAM, "ash_yam"),
+            Setup.setup(WARPED_YAM, "warped_yam"),
             Setup.setup(LAVA_BERRIES, "lava_berries")
 };
 
