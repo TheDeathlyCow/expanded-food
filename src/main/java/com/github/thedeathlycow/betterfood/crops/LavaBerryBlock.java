@@ -72,8 +72,7 @@ public class LavaBerryBlock extends BushBlock implements IGrowable {
 
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
         if (entityIn instanceof LivingEntity) {
-            entityIn.setFire(7);
-            //entityIn.attackEntityFrom(DamageSource.ON_FIRE, 1.0f);
+            entityIn.setFire(2 * state.get(AGE) + 1);
         }
     }
 
