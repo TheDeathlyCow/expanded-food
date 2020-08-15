@@ -20,7 +20,6 @@ import java.util.Random;
 
 public class WarpedYamBlock extends CropsBlock {
 
-
     public static final IntegerProperty WARPED_YAM_AGE = BlockStateProperties.AGE_0_3;
     private static final VoxelShape[] SHAPE = new VoxelShape[]{Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D)};
 
