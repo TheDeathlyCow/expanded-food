@@ -3,6 +3,7 @@ package com.github.thedeathlycow.betterfood.init;
 import com.github.thedeathlycow.betterfood.Main;
 import com.github.thedeathlycow.betterfood.foods.ModFoods;
 import com.github.thedeathlycow.betterfood.items.tools.HomiItem;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraftforge.registries.ObjectHolder;
 
@@ -36,6 +37,7 @@ public class ModItems {
     // nether crops
     public static final Item ASH_YAM_SEEDS = null;
     public static final Item ASH_YAM = new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.BEETROOT));
+    public static final Item LAVA_BERRIES = new BlockNamedItem(ModBlocks.LAVA_BERRIES, (new Item.Properties()).group(ItemGroup.FOOD).food(ModFoods.LAVA_BERRIES));
 
     public static Item[] ITEMS = {
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.APPLE)), "green_apple"),
@@ -60,6 +62,7 @@ public class ModItems {
             Setup.setup(new HomiItem(ItemTier.GOLD, -3.0f, new Item.Properties().group(ItemGroup.TOOLS)), "golden_homi"),
             Setup.setup(new BlockNamedItem(ModBlocks.ASH_YAM, new Item.Properties().group(ItemGroup.MATERIALS)), "ash_yam_seeds"),
             Setup.setup(ASH_YAM, "ash_yam"),
-            new BlockItem(ModBlocks.NETHERRACK_FARMLAND, new Item.Properties().group(ItemGroup.DECORATIONS)).setRegistryName(ModBlocks.NETHERRACK_FARMLAND.getRegistryName())
+            new BlockItem(ModBlocks.NETHERRACK_FARMLAND, new Item.Properties().group(ItemGroup.DECORATIONS)).setRegistryName(ModBlocks.NETHERRACK_FARMLAND.getRegistryName()),
+            Setup.setup(LAVA_BERRIES, "lava_berries")
     };
 }
