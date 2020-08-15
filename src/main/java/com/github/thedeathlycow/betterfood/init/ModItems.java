@@ -37,7 +37,7 @@ public class ModItems {
     // nether crops
     public static final Item WARPED_YAM_SEEDS = null;
     public static final Item WARPED_YAM = new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.BEETROOT));
-    public static final Item LAVA_BERRIES = new BlockNamedItem(ModBlocks.LAVA_BERRIES, (new Item.Properties()).group(ItemGroup.FOOD).food(ModFoods.LAVA_BERRIES));
+    public static final Item LAVA_BERRIES = new BlockNamedItem(ModBlocks.LAVA_BERRY_BUSH, (new Item.Properties()).group(ItemGroup.FOOD).food(ModFoods.LAVA_BERRIES));
 
     public static Item[] ITEMS = {
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.APPLE)), "green_apple"),

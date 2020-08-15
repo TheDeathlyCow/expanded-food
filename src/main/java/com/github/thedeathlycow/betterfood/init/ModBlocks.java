@@ -29,7 +29,7 @@ public class  ModBlocks {
     public static final WaterCropsBlock WILD_RICE_BASE = new WildRiceBase(WILD_RICE_TOP);
     public static final Block NETHERRACK_FARMLAND = null;
     public static final Block WARPED_YAM = new WarpedYamBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.field_235591_M_));
-    public static final Block LAVA_BERRIES = new LavaBerryBlock(AbstractBlock.Properties.create(Material.PLANTS).tickRandomly().zeroHardnessAndResistance().doesNotBlockMovement().sound(SoundType.CROP));
+    public static final Block LAVA_BERRY_BUSH = new LavaBerryBlock(AbstractBlock.Properties.create(Material.PLANTS).tickRandomly().zeroHardnessAndResistance().doesNotBlockMovement().sound(SoundType.CROP));
 
     public static Block[] BLOCKS = {
             Setup.setup(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f)),"salt_deposit"),
@@ -43,7 +43,7 @@ public class  ModBlocks {
                 if (property.get(NetherrackFarmlandBlock.HEAT) == 7) return 2; else return 0;
             }).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.field_235589_K_)), "netherrack_farmland"),
             Setup.setup(WARPED_YAM, "warped_yam"),
-            Setup.setup(LAVA_BERRIES, "lava_berries")
+            Setup.setup(LAVA_BERRY_BUSH, "lava_berry_bush")
 };
 
 }
