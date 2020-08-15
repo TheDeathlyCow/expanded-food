@@ -48,6 +48,7 @@ public final class ModEventSubscriber {
             RenderTypeLookup.setRenderLayer(ModBlocks.WILD_RICE_BASE, RenderType.getCutout());
             RenderTypeLookup.setRenderLayer(ModBlocks.WILD_RICE_TOP, RenderType.getCutout());
             RenderTypeLookup.setRenderLayer(ModBlocks.WARPED_YAM, RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.LAVA_BERRY_BUSH, RenderType.getCutout());
         }
     }
 
