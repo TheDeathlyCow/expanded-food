@@ -1,5 +1,6 @@
 package com.github.thedeathlycow.betterfood;
 
+import com.github.thedeathlycow.betterfood.effects.ModEffects;
 import com.github.thedeathlycow.betterfood.init.ModBlocks;
 import com.github.thedeathlycow.betterfood.init.ModFeatures;
 import com.github.thedeathlycow.betterfood.init.ModItems;
@@ -7,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.Item;
+import net.minecraft.potion.Effect;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.GenerationStage;
@@ -38,6 +40,11 @@ public final class ModEventSubscriber {
     @SubscribeEvent
     public static void onRegisterFeatures(RegistryEvent.Register<Feature<?>> event) {
         event.getRegistry().registerAll(ModFeatures.FEATURES);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterEffects(RegistryEvent.Register<Effect> event) {
+        event.getRegistry().registerAll(ModEffects.EFFECTS);
     }
 
     @SubscribeEvent

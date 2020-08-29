@@ -25,7 +25,7 @@ public class ModItems {
     public static final Item CALAMARI_SUSHI = null;
     public static final Item GAS_STATION_SUSHI = null;
     public static final Item RICE_BOWL = null;
-    
+
     // homi
     public static final Item WOODEN_HOMI = null;
     public static final Item STONE_HOMI = null;
