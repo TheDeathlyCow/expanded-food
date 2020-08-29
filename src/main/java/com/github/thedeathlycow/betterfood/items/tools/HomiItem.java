@@ -2,7 +2,6 @@ package com.github.thedeathlycow.betterfood.items.tools;
 
 import com.github.thedeathlycow.betterfood.init.ModBlocks;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

@@ -3,7 +3,6 @@ package com.github.thedeathlycow.betterfood.init;
 import com.github.thedeathlycow.betterfood.Main;
 import com.github.thedeathlycow.betterfood.foods.ModFoods;
 import com.github.thedeathlycow.betterfood.items.tools.HomiItem;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraftforge.registries.ObjectHolder;
 
@@ -38,6 +37,7 @@ public class ModItems {
 //    public static final Item WARPED_YAM = new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.BEETROOT));
     public static final Item WARPED_YAM = new BlockNamedItem(ModBlocks.WARPED_YAM, new Item.Properties().group(ItemGroup.FOOD).food(Foods.POTATO));
     public static final Item LAVA_BERRIES = new BlockNamedItem(ModBlocks.LAVA_BERRY_BUSH, (new Item.Properties()).group(ItemGroup.FOOD).food(ModFoods.LAVA_BERRIES));
+    public static final Item CRIMSON_REAPER = new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.CRIMSON_REAPER));
 
     public static Item[] ITEMS = {
             Setup.setup(new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.APPLE)), "green_apple"),
@@ -63,6 +63,7 @@ public class ModItems {
 //            Setup.setup(new BlockNamedItem(ModBlocks.WARPED_YAM, new Item.Properties().group(ItemGroup.MATERIALS)), "warped_yam_seeds"),
             Setup.setup(WARPED_YAM, "warped_yam"),
             new BlockItem(ModBlocks.NETHERRACK_FARMLAND, new Item.Properties().group(ItemGroup.DECORATIONS)).setRegistryName(ModBlocks.NETHERRACK_FARMLAND.getRegistryName()),
-            Setup.setup(LAVA_BERRIES, "lava_berries")
+            Setup.setup(LAVA_BERRIES, "lava_berries"),
+            Setup.setup(CRIMSON_REAPER, "crimson_reaper")
     };
 }

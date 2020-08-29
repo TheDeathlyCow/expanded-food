@@ -1,5 +1,6 @@
 package com.github.thedeathlycow.betterfood.foods;
 
+import com.github.thedeathlycow.betterfood.effects.ModEffects;
 import net.minecraft.item.Food;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
@@ -18,6 +19,9 @@ public class ModFoods {
     public static final Food LAVA_BERRIES;
     public static final Food ASH_YAM;
 
+    public static final Food CRIMSON_REAPER;
+
+
     private static EffectInstance[] gasStationSushiEffects = {
             new EffectInstance(Effects.POISON, 600, 1),
             new EffectInstance(Effects.BLINDNESS, 300, 1),
@@ -35,6 +39,7 @@ public class ModFoods {
         GAS_STATION_SUSHI = (new Food.Builder()).hunger(4).saturation(0.0f).effect(gasStationSushiEffects[0], 0.5f).effect(gasStationSushiEffects[1], 0.5f).effect(gasStationSushiEffects[2], 0.5f).effect(gasStationSushiEffects[3], 0.5f).build();
         LAVA_BERRIES = (new Food.Builder()).hunger(2).saturation(0.4f).build();
         ASH_YAM = (new Food.Builder()).hunger(4).saturation(0.6f).build();
+        CRIMSON_REAPER = (new Food.Builder()).hunger(5).saturation(0.9f).effect(new EffectInstance(ModEffects.SPICY, 100, 0), 1).build();
     }
 
 }

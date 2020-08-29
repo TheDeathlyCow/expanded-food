@@ -2,9 +2,9 @@ package com.github.thedeathlycow.betterfood.crops;
 
 import com.github.thedeathlycow.betterfood.init.ModBlocks;
 import com.github.thedeathlycow.betterfood.init.ModItems;
-import net.minecraft.block.*;
-import net.minecraft.item.Items;
-import net.minecraft.potion.Effects;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.CropsBlock;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
