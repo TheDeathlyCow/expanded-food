@@ -4,6 +4,7 @@ import com.github.thedeathlycow.betterfood.init.ModBlocks;
 import com.github.thedeathlycow.betterfood.init.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.item.Items;
+import net.minecraft.potion.Effects;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -29,7 +30,7 @@ public class WarpedYamBlock extends CropsBlock {
 
     @Override
     protected IItemProvider getSeedsItem() {
-        return ModItems.WARPED_YAM_SEEDS;
+        return ModItems.WARPED_YAM;
     }
 
     @Override
@@ -40,12 +41,14 @@ public class WarpedYamBlock extends CropsBlock {
     }
 
     public void grow(World worldIn, BlockPos pos, BlockState state) {
-        int age = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
+
+        int newAge = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
         int maxAge = this.getMaxAge();
-        if (age > maxAge) {
-            age = maxAge;
+        if (newAge > maxAge) {
+            newAge = maxAge;
         }
-        worldIn.setBlockState(pos, this.withAge(age), 2);
+
+        worldIn.setBlockState(pos, this.withAge(newAge), 2);
     }
 
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
@@ -60,10 +63,6 @@ public class WarpedYamBlock extends CropsBlock {
         return WARPED_YAM_AGE;
     }
 
-    protected int getBonemealAgeIncrease(World worldIn) {
-        return super.getBonemealAgeIncrease(worldIn) / 3;
-    }
-
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(WARPED_YAM_AGE);
     }
@@ -74,7 +73,6 @@ public class WarpedYamBlock extends CropsBlock {
 
     @Override
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-
         BlockPos blockOnPos = pos.down();
         BlockState blockOnState = worldIn.getBlockState(blockOnPos);
         Block blockOn = blockOnState.getBlock();

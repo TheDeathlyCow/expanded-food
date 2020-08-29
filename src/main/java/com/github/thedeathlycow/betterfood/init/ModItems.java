@@ -25,8 +25,7 @@ public class ModItems {
     public static final Item CALAMARI_SUSHI = null;
     public static final Item GAS_STATION_SUSHI = null;
     public static final Item RICE_BOWL = null;
-
-
+    
     // homi
     public static final Item WOODEN_HOMI = null;
     public static final Item STONE_HOMI = null;
@@ -35,8 +34,9 @@ public class ModItems {
     public static final Item GOLDEN_HOMI = null;
 
     // nether crops
-    public static final Item WARPED_YAM_SEEDS = null;
-    public static final Item WARPED_YAM = new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.BEETROOT));
+//    public static final Item WARPED_YAM_SEEDS = null;
+//    public static final Item WARPED_YAM = new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.BEETROOT));
+    public static final Item WARPED_YAM = new BlockNamedItem(ModBlocks.WARPED_YAM, new Item.Properties().group(ItemGroup.FOOD).food(Foods.POTATO));
     public static final Item LAVA_BERRIES = new BlockNamedItem(ModBlocks.LAVA_BERRY_BUSH, (new Item.Properties()).group(ItemGroup.FOOD).food(ModFoods.LAVA_BERRIES));
 
     public static Item[] ITEMS = {
@@ -60,7 +60,7 @@ public class ModItems {
             Setup.setup(new HomiItem(ItemTier.IRON, -1.0f, new Item.Properties().group(ItemGroup.TOOLS)), "iron_homi"),
             Setup.setup(new HomiItem(ItemTier.DIAMOND, 0.0f, new Item.Properties().group(ItemGroup.TOOLS)), "diamond_homi"),
             Setup.setup(new HomiItem(ItemTier.GOLD, -3.0f, new Item.Properties().group(ItemGroup.TOOLS)), "golden_homi"),
-            Setup.setup(new BlockNamedItem(ModBlocks.WARPED_YAM, new Item.Properties().group(ItemGroup.MATERIALS)), "warped_yam_seeds"),
+//            Setup.setup(new BlockNamedItem(ModBlocks.WARPED_YAM, new Item.Properties().group(ItemGroup.MATERIALS)), "warped_yam_seeds"),
             Setup.setup(WARPED_YAM, "warped_yam"),
             new BlockItem(ModBlocks.NETHERRACK_FARMLAND, new Item.Properties().group(ItemGroup.DECORATIONS)).setRegistryName(ModBlocks.NETHERRACK_FARMLAND.getRegistryName()),
             Setup.setup(LAVA_BERRIES, "lava_berries")
