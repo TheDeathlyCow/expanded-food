@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "better-food:block/crimson_reaper_stage2"
+  }
+}

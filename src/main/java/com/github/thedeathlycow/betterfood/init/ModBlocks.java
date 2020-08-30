@@ -4,10 +4,7 @@ import com.github.thedeathlycow.betterfood.Main;
 import com.github.thedeathlycow.betterfood.blocks.EmptyBlock;
 import com.github.thedeathlycow.betterfood.blocks.NetherrackFarmlandBlock;
 import com.github.thedeathlycow.betterfood.blocks.PaddyBlock;
-import com.github.thedeathlycow.betterfood.crops.WarpedYamBlock;
-import com.github.thedeathlycow.betterfood.crops.LavaBerryBlock;
-import com.github.thedeathlycow.betterfood.crops.WaterCropsBlock;
-import com.github.thedeathlycow.betterfood.crops.WaterCropsTopBlock;
+import com.github.thedeathlycow.betterfood.crops.*;
 import com.github.thedeathlycow.betterfood.crops.rice.RiceCropBlock;
 import com.github.thedeathlycow.betterfood.crops.rice.RiceCropTopBlock;
 import com.github.thedeathlycow.betterfood.crops.rice.WildRiceBase;
@@ -30,6 +27,7 @@ public class  ModBlocks {
     public static final Block NETHERRACK_FARMLAND = null;
     public static final Block WARPED_YAM = new WarpedYamBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.field_235591_M_));
     public static final Block LAVA_BERRY_BUSH = new LavaBerryBlock(AbstractBlock.Properties.create(Material.PLANTS).tickRandomly().zeroHardnessAndResistance().doesNotBlockMovement().sound(SoundType.CROP));
+    public static final Block CRIMSON_REAPER_BUSH = new CrimsonReaperBlock(AbstractBlock.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().zeroHardnessAndResistance());
 
     public static Block[] BLOCKS = {
             Setup.setup(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f)),"salt_deposit"),
@@ -43,7 +41,8 @@ public class  ModBlocks {
                 if (property.get(NetherrackFarmlandBlock.HEAT) == 7) return 2; else return 0;
             }).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.field_235589_K_)), "netherrack_farmland"),
             Setup.setup(WARPED_YAM, "warped_yam"),
-            Setup.setup(LAVA_BERRY_BUSH, "lava_berry_bush")
+            Setup.setup(LAVA_BERRY_BUSH, "lava_berry_bush"),
+            Setup.setup(CRIMSON_REAPER_BUSH, "crimson_reaper_bush")
 };
 
 }

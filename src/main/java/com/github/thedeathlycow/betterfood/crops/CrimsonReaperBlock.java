@@ -5,19 +5,20 @@ import com.github.thedeathlycow.betterfood.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.IItemProvider;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
-
-import java.util.Random;
 
 public class CrimsonReaperBlock extends CropsBlock {
 
@@ -30,29 +31,28 @@ public class CrimsonReaperBlock extends CropsBlock {
 
     @Override
     protected IItemProvider getSeedsItem() {
-        return ModItems.WARPED_YAM;
+        return ModItems.CRIMSON_REAPER_SEEDS;
     }
 
-    @Override
-    public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-        if (random.nextInt(3) != 0) {
-            super.randomTick(state, worldIn, pos, random);
-        }
-    }
-
-    public void grow(World worldIn, BlockPos pos, BlockState state) {
-
-        int newAge = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
-        int maxAge = this.getMaxAge();
-        if (newAge > maxAge) {
-            newAge = maxAge;
-        }
-
-        worldIn.setBlockState(pos, this.withAge(newAge), 2);
-    }
 
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return state.isIn(ModBlocks.NETHERRACK_FARMLAND);
+    }
+
+    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+        int i = state.get(CRIMSON_REAPER_AGE);
+        boolean flag = i == 3;
+        if (!flag && player.getHeldItem(handIn).getItem() == Items.BONE_MEAL) {
+            return ActionResultType.PASS;
+        } else if (i > 1) {
+            int j = 1 + worldIn.rand.nextInt(2);
+            spawnAsEntity(worldIn, pos, new ItemStack(ModItems.CRIMSON_REAPER, j + (flag ? 1 : 0)));
+            worldIn.playSound((PlayerEntity) null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+            worldIn.setBlockState(pos, state.with(CRIMSON_REAPER_AGE, Integer.valueOf(1)), 2);
+            return ActionResultType.func_233537_a_(worldIn.isRemote);
+        } else {
+            return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+        }
     }
 
     public int getMaxAge() {

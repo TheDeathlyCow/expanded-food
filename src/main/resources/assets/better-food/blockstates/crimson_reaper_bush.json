@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "better-food:block/crimson_reaper_stage0"
+    },
+    "age=1": {
+      "model": "better-food:block/crimson_reaper_stage1"
+    },
+    "age=2": {
+      "model": "better-food:block/crimson_reaper_stage2"
+    },
+    "age=3": {
+      "model": "better-food:block/crimson_reaper_stage3"
+    }
+  }
+}

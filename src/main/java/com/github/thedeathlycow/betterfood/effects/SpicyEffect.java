@@ -19,7 +19,7 @@ public class SpicyEffect extends Effect {
     @Override
     public boolean isReady(int duration, int amplifier) {
         if (this == ModEffects.SPICY) {
-            int k = 50 >> amplifier;
+            int k = 20 >> amplifier;
             if (k > 0) {
                 return duration % k == 0;
             } else {
