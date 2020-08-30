@@ -36,7 +36,7 @@ public class ModItems {
 //    public static final Item WARPED_YAM_SEEDS = null;
 //    public static final Item WARPED_YAM = new Item(new Item.Properties().group(ItemGroup.FOOD).food(Foods.BEETROOT));
     public static final Item WARPED_YAM = new BlockNamedItem(ModBlocks.WARPED_YAM, new Item.Properties().group(ItemGroup.FOOD).food(Foods.POTATO));
-    public static final Item LAVA_BERRIES = new BlockNamedItem(ModBlocks.LAVA_BERRY_BUSH, (new Item.Properties()).group(ItemGroup.FOOD).food(ModFoods.LAVA_BERRIES));
+    public static final Item LAVA_BERRIES = new BlockNamedItem(ModBlocks.LAVA_BERRY_BUSH, (new Item.Properties()).group(ItemGroup.FOOD).food(ModFoods.LAVA_BERRIES).maxStackSize(16));
     public static final Item CRIMSON_REAPER = new Item(new Item.Properties().group(ItemGroup.FOOD).food(ModFoods.CRIMSON_REAPER));
 
     public static Item[] ITEMS = {
