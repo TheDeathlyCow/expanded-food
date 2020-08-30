@@ -48,7 +48,7 @@ public class CrimsonReaperBlock extends CropsBlock {
             int j = 1 + worldIn.rand.nextInt(2);
             spawnAsEntity(worldIn, pos, new ItemStack(ModItems.CRIMSON_REAPER, j + (flag ? 1 : 0)));
             worldIn.playSound((PlayerEntity) null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-            worldIn.setBlockState(pos, state.with(CRIMSON_REAPER_AGE, Integer.valueOf(1)), 2);
+            worldIn.setBlockState(pos, state.with(CRIMSON_REAPER_AGE, Integer.valueOf(2)), 2);
             return ActionResultType.func_233537_a_(worldIn.isRemote);
         } else {
             return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);

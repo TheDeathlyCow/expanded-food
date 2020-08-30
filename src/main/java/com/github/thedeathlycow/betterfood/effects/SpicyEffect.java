@@ -12,7 +12,7 @@ public class SpicyEffect extends Effect {
 
     @Override
     public void performEffect(LivingEntity entityLivingBaseIn, int amplifier) {
-        int fireTime = 4;
+        int fireTime = 1;
         entityLivingBaseIn.setFire(fireTime);
     }
 

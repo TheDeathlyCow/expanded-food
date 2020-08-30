@@ -37,7 +37,7 @@ public class ModFoods {
         RICE_BOWL = (new Food.Builder()).hunger(8).saturation(0.5f).build();
         SUSHI = (new Food.Builder()).hunger(6).saturation(0.5f).build();
         GAS_STATION_SUSHI = (new Food.Builder()).hunger(4).saturation(0.0f).effect(gasStationSushiEffects[0], 0.5f).effect(gasStationSushiEffects[1], 0.5f).effect(gasStationSushiEffects[2], 0.5f).effect(gasStationSushiEffects[3], 0.5f).build();
-        LAVA_BERRIES = (new Food.Builder()).hunger(2).saturation(0.4f).effect(new EffectInstance(Effects.FIRE_RESISTANCE, 5*20, 0), 0.8f).build();
+        LAVA_BERRIES = (new Food.Builder()).hunger(1).saturation(0.3f).effect(new EffectInstance(Effects.FIRE_RESISTANCE, 5*20, 0), 0.8f).build();
         WARPED_YAM = (new Food.Builder()).hunger(4).saturation(0.6f).build();
         CRIMSON_REAPER = (new Food.Builder()).hunger(5).saturation(0.7f).effect(new EffectInstance(ModEffects.SPICY, 100, 0), 1).build();
     }
