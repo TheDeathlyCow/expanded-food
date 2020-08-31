@@ -21,7 +21,6 @@ public class ModFoods {
 
     public static final Food CRIMSON_REAPER;
 
-
     private static EffectInstance[] gasStationSushiEffects = {
             new EffectInstance(Effects.POISON, 600, 1),
             new EffectInstance(Effects.BLINDNESS, 300, 1),

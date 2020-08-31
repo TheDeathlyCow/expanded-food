@@ -27,22 +27,21 @@ public class  ModBlocks {
     public static final Block NETHERRACK_FARMLAND = null;
     public static final Block WARPED_YAM = new WarpedYamBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.field_235591_M_));
     public static final Block LAVA_BERRY_BUSH = new LavaBerryBlock(AbstractBlock.Properties.create(Material.PLANTS).tickRandomly().zeroHardnessAndResistance().doesNotBlockMovement().sound(SoundType.CROP));
-    public static final Block CRIMSON_REAPER_BUSH = new CrimsonReaperBlock(AbstractBlock.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().zeroHardnessAndResistance());
+    public static final Block CRIMSON_REAPER_BUSH = new CrimsonReaperBlock(AbstractBlock.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.NETHER_WART));
 
     public static Block[] BLOCKS = {
-            Setup.setup(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f)),"salt_deposit"),
-            Setup.setup(new PaddyBlock(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6f, 0.6f).sound(SoundType.GROUND).tickRandomly()), "paddy"),
-            Setup.setup(RICE_PLANT_TOP, "rice_plant_top"),
-            Setup.setup(RICE_PLANT, "rice_plant"),
-            Setup.setup(new EmptyBlock(Block.Properties.create(Material.OCEAN_PLANT)), "empty_block"),
-            Setup.setup(WILD_RICE_TOP, "wild_rice_top"),
-            Setup.setup(WILD_RICE_BASE, "wild_rice_base"),
-            Setup.setup(new NetherrackFarmlandBlock(Block.Properties.create(Material.ROCK, MaterialColor.NETHERRACK).func_235838_a_((property) -> {
-                if (property.get(NetherrackFarmlandBlock.HEAT) == 7) return 2; else return 0;
-            }).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.field_235589_K_)), "netherrack_farmland"),
-            Setup.setup(WARPED_YAM, "warped_yam"),
-            Setup.setup(LAVA_BERRY_BUSH, "lava_berry_bush"),
-            Setup.setup(CRIMSON_REAPER_BUSH, "crimson_reaper_bush")
-};
-
+        Setup.setup(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f)),"salt_deposit"),
+        Setup.setup(new PaddyBlock(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6f, 0.6f).sound(SoundType.GROUND).tickRandomly()), "paddy"),
+        Setup.setup(RICE_PLANT_TOP, "rice_plant_top"),
+        Setup.setup(RICE_PLANT, "rice_plant"),
+        Setup.setup(new EmptyBlock(Block.Properties.create(Material.OCEAN_PLANT)), "empty_block"),
+        Setup.setup(WILD_RICE_TOP, "wild_rice_top"),
+        Setup.setup(WILD_RICE_BASE, "wild_rice_base"),
+        Setup.setup(new NetherrackFarmlandBlock(Block.Properties.create(Material.ROCK, MaterialColor.NETHERRACK).setLightLevel((property) -> {
+            if (property.get(NetherrackFarmlandBlock.HEAT) == 7) return 2; else return 0;
+        }).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.field_235589_K_)), "netherrack_farmland"),
+        Setup.setup(WARPED_YAM, "warped_yam"),
+        Setup.setup(LAVA_BERRY_BUSH, "lava_berry_bush"),
+        Setup.setup(CRIMSON_REAPER_BUSH, "crimson_reaper_bush")
+    };
 }

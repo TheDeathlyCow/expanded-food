@@ -36,7 +36,11 @@ public class LavaBerryBlock extends BushBlock implements IGrowable {
 
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.isIn(Blocks.NETHERRACK) || state.isIn(Blocks.field_235372_ml_) || state.isIn(Blocks.field_235381_mu_) || state.isIn(Blocks.SOUL_SAND) || state.isIn(Blocks.field_235336_cN_);
+        return state.isIn(Blocks.NETHERRACK) || state.isIn(Blocks.WARPED_NYLIUM) || state.isIn(Blocks.CRIMSON_NYLIUM) || state.isIn(Blocks.SOUL_SAND) || state.isIn(Blocks.SOUL_SOIL);
+    }
+
+    public BlockState withAge(int age) {
+        return this.getDefaultState().with(this.AGE, Integer.valueOf(age));
     }
 
     public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {

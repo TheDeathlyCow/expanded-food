@@ -29,8 +29,8 @@ public class HomiItem extends TieredItem {
             put(Blocks.DIRT, ModBlocks.PADDY.getDefaultState()).
             put(Blocks.COARSE_DIRT, Blocks.DIRT.getDefaultState()).
             put(Blocks.NETHERRACK, ModBlocks.NETHERRACK_FARMLAND.getDefaultState()).
-            put(Blocks.field_235372_ml_, ModBlocks.NETHERRACK_FARMLAND.getDefaultState()). // warped nylium
-            put(Blocks.field_235381_mu_, ModBlocks.NETHERRACK_FARMLAND.getDefaultState()). // crimson nylium
+            put(Blocks.WARPED_NYLIUM, ModBlocks.NETHERRACK_FARMLAND.getDefaultState()). // warped nylium
+            put(Blocks.CRIMSON_NYLIUM, ModBlocks.NETHERRACK_FARMLAND.getDefaultState()). // crimson nylium
             build();
 
     public HomiItem(IItemTier itemTier, float attackSpeedIn, Item.Properties builder) {
