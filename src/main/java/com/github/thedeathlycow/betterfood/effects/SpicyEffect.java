@@ -10,12 +10,18 @@ public class SpicyEffect extends Effect {
         super(typeIn, liquidColorIn);
     }
 
+    /**
+     * Sets the entity on fire.
+     */
     @Override
     public void performEffect(LivingEntity entityLivingBaseIn, int amplifier) {
         int fireTime = 1;
         entityLivingBaseIn.setFire(fireTime);
     }
 
+    /**
+     * Checks if the Spicy effect is ready to be applied this tick.
+     */
     @Override
     public boolean isReady(int duration, int amplifier) {
         if (this == ModEffects.SPICY) {
