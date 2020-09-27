@@ -1,19 +1,17 @@
 package com.github.thedeathlycow.betterfood.init;
 
 import com.github.thedeathlycow.betterfood.Main;
-import com.github.thedeathlycow.betterfood.crops.LavaBerryBlock;
 import com.github.thedeathlycow.betterfood.feature.LavaBerryFeature;
 import com.github.thedeathlycow.betterfood.feature.RicePlantFeature;
-import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.biome.CrimsonForestBiome;
-import net.minecraft.world.biome.NetherWastesBiome;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
-import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.placement.*;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.placement.ChanceRangeConfig;
+import net.minecraft.world.gen.placement.CountRangeConfig;
+import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.registries.ObjectHolder;
 
 @ObjectHolder(Main.MODID)
@@ -26,14 +24,14 @@ public class ModFeatures {
     public static final Feature<NoFeatureConfig> LAVA_BERRY_BUSH = new LavaBerryFeature(NoFeatureConfig.field_236558_a_);
 
     public static Feature<?>[] FEATURES = {
-        Setup.setup(RICE_PLANT, "rice_plant"),
-        Setup.setup(LAVA_BERRY_BUSH, "lava_berry_bush")
+            Setup.setup(RICE_PLANT, "rice_plant"),
+            Setup.setup(LAVA_BERRY_BUSH, "lava_berry_bush")
     };
 
     private static final Biome[] NETHER_BIOMES = {
-        Biomes.field_235254_j_, // nether wastes
-        Biomes.field_235250_aA_, // warped forest
-        Biomes.field_235253_az_ // crimson forest
+            Biomes.field_235254_j_, // nether wastes
+            Biomes.field_235250_aA_, // warped forest
+            Biomes.field_235253_az_ // crimson forest
     };
 
     public static void placeFeatures() {
