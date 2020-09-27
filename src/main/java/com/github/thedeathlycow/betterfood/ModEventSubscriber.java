@@ -61,14 +61,16 @@ public final class ModEventSubscriber {
     @SubscribeEvent
     public static void FMLLoadCompleteEvent(FMLLoadCompleteEvent event) {
 
-        Biomes.SWAMP.addFeature(
-                GenerationStage.Decoration.VEGETAL_DECORATION,
-                ModFeatures.RICE_PLANT.withConfiguration(new NoFeatureConfig()).withPlacement(Placement.CHANCE_RANGE.configure(new ChanceRangeConfig(100.0f, 60, 0, 65)))
-//                Biome.createDecoratedFeature(ModFeatures.RICE_PLANT,
-//                        new NoFeatureConfig(),
-//                        Placement.CHANCE_RANGE,
-//                        new ChanceRangeConfig(100.0f, 60, 0, 65)
-//                )
-        );
+//        Biomes.SWAMP.addFeature(
+//                GenerationStage.Decoration.VEGETAL_DECORATION,
+//                ModFeatures.RICE_PLANT.withConfiguration(new NoFeatureConfig()).withPlacement(Placement.CHANCE_RANGE.configure(new ChanceRangeConfig(100.0f, 60, 0, 65)))
+////                Biome.createDecoratedFeature(ModFeatures.RICE_PLANT,
+////                        new NoFeatureConfig(),
+////                        Placement.CHANCE_RANGE,
+////                        new ChanceRangeConfig(100.0f, 60, 0, 65)
+////                )
+//        );
+
+        ModFeatures.placeFeatures();
     }
 }

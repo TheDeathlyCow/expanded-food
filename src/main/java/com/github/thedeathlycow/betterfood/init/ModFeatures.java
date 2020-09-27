@@ -39,14 +39,15 @@ public class ModFeatures {
     public static void placeFeatures() {
         Biomes.SWAMP.addFeature(
                 GenerationStage.Decoration.VEGETAL_DECORATION,
-                ModFeatures.RICE_PLANT.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.CHANCE_RANGE.configure(new ChanceRangeConfig(100.0f, 60, 0, 65)))
+                ModFeatures.RICE_PLANT.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.CHANCE_RANGE.configure(new ChanceRangeConfig(0.75f, 60, 0, 65)))
         );
 
         for (Biome bushBiome : NETHER_BIOMES) {
             bushBiome.addFeature(
-                    GenerationStage.Decoration.VEGETAL_DECORATION, ModFeatures.LAVA_BERRY_BUSH.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 0, 0, 128)))
+                    GenerationStage.Decoration.UNDERGROUND_DECORATION, ModFeatures.LAVA_BERRY_BUSH.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(5, 0, 0, 128)))
             );
         }
+
     }
 
 }
