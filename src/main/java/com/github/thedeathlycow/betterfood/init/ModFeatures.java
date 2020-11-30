@@ -42,7 +42,7 @@ public class ModFeatures {
 
         for (Biome bushBiome : NETHER_BIOMES) {
             bushBiome.addFeature(
-                    GenerationStage.Decoration.UNDERGROUND_DECORATION, ModFeatures.LAVA_BERRY_BUSH.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(5, 0, 0, 128)))
+                    GenerationStage.Decoration.UNDERGROUND_DECORATION, ModFeatures.LAVA_BERRY_BUSH.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(1 , 0, 0, 128)))
             );
         }
 

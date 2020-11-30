@@ -4,6 +4,7 @@ import com.github.thedeathlycow.betterfood.effects.ModEffects;
 import com.github.thedeathlycow.betterfood.init.ModBlocks;
 import com.github.thedeathlycow.betterfood.init.ModFeatures;
 import com.github.thedeathlycow.betterfood.init.ModItems;
+import com.github.thedeathlycow.betterfood.modifiers.BirchLeavesConverterModifier;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -15,6 +16,8 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placement.ChanceRangeConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -43,6 +46,11 @@ public final class ModEventSubscriber {
     @SubscribeEvent
     public static void onRegisterEffects(RegistryEvent.Register<Effect> event) {
         event.getRegistry().registerAll(ModEffects.EFFECTS);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterLootModifiers(RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
+        event.getRegistry().register(new BirchLeavesConverterModifier.Serializer().setRegistryName(Main.MODID,"birch_leaves"));
     }
 
     @SubscribeEvent
